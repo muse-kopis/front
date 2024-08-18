@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Div } from "./components/common/div";
 import { GRAY3 } from "./constants/color";
-import Main from "./pages/Main";
-import Detail from "./pages/Detail";
+import { Main, Detail, Favorite } from "./pages";
 
 const App = () => {
   return(
@@ -12,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/detail/:performancesId" element={<Detail />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       </Div>
     </BrowserRouter>
