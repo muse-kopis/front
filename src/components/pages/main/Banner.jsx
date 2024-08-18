@@ -11,7 +11,7 @@ const Container = styled(Div)`
 
 const Banner = () => {
   return(
-    <Container $flex={true} $direction='column' $align='start' $radius='0' $padding='18px'>
+    <Container $flex={true} $direction='column' $align='start' $padding='18px'>
       <Text $color={WHITE} $size={16} $weight='LIGHT'>
         기다렸던 공연, 놓치지 않도록
       </Text>

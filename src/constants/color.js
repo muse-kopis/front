@@ -1,6 +1,7 @@
 export const NAVY = '#002043';
 
 export const WHITE = '#FFFFFF';
+export const GRAY0 = '#F7F7F7';
 export const GRAY1 = '#F1F3F5';
 export const GRAY2 = '#E2E2E2';
 export const GRAY3 = '#CCCCCC';

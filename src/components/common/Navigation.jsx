@@ -15,7 +15,6 @@ const Container = styled(Div)`
   flex-grow: 1;
   height: 55px;
   border-top: solid 1px ${GRAY3};
-  border-radius: 0;
   justify-content: space-evenly;
   display: flex;
   background-color: white;
