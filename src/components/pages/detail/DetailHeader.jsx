@@ -4,9 +4,6 @@ import { BackIcon, CreateTicketIcon } from "../../../assets/icons";
 
 const DetailHeader = () => {
   const navigation = useNavigate();
-  const handleClick = () => {
-    navigation('/');
-  }
 
   const handleBack = () => {
     navigation(-1);
@@ -16,9 +13,8 @@ const DetailHeader = () => {
     navigation('/createTicket');
   }
 
-
   return (
-    <Div $height='47px' $flex={true} $justify='start' $padding='0 18px' $justify='space-between'>
+    <Div $height='47px' $flex={true} $padding='0 18px' $justify='space-between'>
       <BackIcon onClick={handleBack} style={{cursor: 'pointer'}} />
       <CreateTicketIcon onClick={handleCreateTicket} style={{cursor: 'pointer'}} />
     </Div>

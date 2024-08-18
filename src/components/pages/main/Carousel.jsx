@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Div, Text } from "../../common/div";
 import { CURATION_FEED } from "../../../constants/content";
@@ -15,20 +15,13 @@ const Image = styled.img`
 `;  
 
 const Carousel = ({ type, content }) => {
-  const [isSliding, setIsSliding] = useState(false);
-
   const settings = {
     dots: false,
     infinite: false,
-    // variableWidth: true,
     speed: 500,
     slidesToShow: 3.2,
     slidesToScroll: 1,
-    beforeChange: () => setIsSliding(true),
-    afterChange: () => setIsSliding(false),
   };
-
-
 
   return(
     <Div $flex={true} $direction='column' $align='start' $width='100%' $overflow='hidden'>
@@ -68,8 +61,6 @@ const Carousel = ({ type, content }) => {
               <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
             </Div>
           </Div>
-
-
         </Slider>
       </Div>
     </Div>
