@@ -1,6 +1,6 @@
 import React from "react";
 import { Div } from "../components/common/div";
-import Header from "../components/common/header";
+import Header from "../components/common/Header";
 import Banner from "../components/pages/main/Banner";
 import Carousel from "../components/pages/main/Carousel";
 import Navigation from "../components/common/Navigation";

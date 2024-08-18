@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <Div $height='47px' $flex={true} $justify='start' $padding='0 18px'>
-      <Text $size='18px' $font='Unbounded' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>MUSEE</Text>
+      <Text $size={18} $font='Unbounded' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>MUSEE</Text>
     </Div>
   )
 }

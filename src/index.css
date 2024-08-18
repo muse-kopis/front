@@ -32,6 +32,7 @@ code {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: #3C3C3C;
 }
 
 a {
@@ -41,4 +42,9 @@ a {
 
 input {
   outline: none;
+}
+
+img {
+  border-radius: 10px;
+  object-fit: cover;
 }

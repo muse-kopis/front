@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import { MOBILE_SIZE, FONT_WEIGHT } from '../../constants/content';
-import { GRAY1, WHITE } from '../../constants/color';
+import { BLACK, GRAY1, WHITE } from '../../constants/color';
 
 export const Text = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};
   font-size: ${ props => props.$size+'px' || '14px'};
-  color: ${ props => props.$color || 'black'};
+  color: ${ props => props.$color || BLACK};
   margin: ${ props => props.$margin || '0'};
   padding: ${ props => props.$padding || '0'};
   height: ${ props => props.$height || 'auto'};
   width: ${ props => props.$width || 'auto'};
   text-align: ${ props => props.$align || 'center'};
   line-height: ${ props => props.$lineHeight || 'normal'};
-  ${ props => props.$weight && FONT_WEIGHT[props.$weight]};
+  ${ props => FONT_WEIGHT[props.$weight] || FONT_WEIGHT.REGULAR};
   ${ props => props.$background && `background-color: ${props.$background};`};
-  white-space: nowrap;
+  white-space: ${ props => props.$whiteSpace || 'nowrap'};
   overflow: hidden;
   text-overflow: ellipsis;
 `;
@@ -54,8 +54,8 @@ export const Div = styled.div`
   padding: ${ props => props.$padding || '0'};
   width: ${ props => props.$width || 'auto'};
   height: ${ props => props.$height || 'auto'};
-  border-radius: ${ props => props.$radius || '15px'};
   max-width: ${ props => props.$maxWidth || MOBILE_SIZE};
+  ${props => props.$radius && `border-radius: ${props.$radius};`};
   ${ props => props.$maxHeight && `max-height: ${props.$maxHeight};`};
   ${ props => props.$cursor && 'cursor: pointer;'};
   ${ props => props.$backgroundColor && `background-color: ${props.$backgroundColor};`};
@@ -63,6 +63,9 @@ export const Div = styled.div`
   ${ props => props.$alginSelf && `align-self: ${props.$alginSelf};`};
   ${ props => props.$overflow && `overflow: ${props.$overflow};`}
   gap: ${ props => props.$gap || '0'};
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const DimDiv = styled.div`

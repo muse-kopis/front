@@ -31,7 +31,7 @@ const Carousel = ({ type, content }) => {
 
 
   return(
-    <Div $flex={true} $direction='column' $align='start' $radius='0' $width='100%' $overflow='hidden'>
+    <Div $flex={true} $direction='column' $align='start' $width='100%' $overflow='hidden'>
       <Text $size={16} $weight='SEMIBOLD' $margin='0 0 7px 0'>
         규리{CURATION_FEED[type].title}
       </Text>
