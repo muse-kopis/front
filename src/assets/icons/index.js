@@ -6,4 +6,5 @@ export { ReactComponent as BackIcon } from './BackIcon.svg';
 export { ReactComponent as CreateTicketIcon } from './CreateTicketIcon.svg';
 export { ReactComponent as StarIcon } from './StarIcon.svg';
 export { ReactComponent as FavoriteIcon } from './FavoriteIcon.svg';
+export { ReactComponent as SearchBarIcon } from './SearchBarIcon.svg';
 export { LikeIcon } from './LikeIcon';
