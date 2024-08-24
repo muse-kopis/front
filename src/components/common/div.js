@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { MOBILE_SIZE, FONT_WEIGHT } from '../../constants/content';
-import { BLACK, GRAY1, WHITE } from '../../constants/color';
+import { BLACK, GRAY0, GRAY1, GRAY2, GRAY3, NAVY, WHITE } from '../../constants/color';
 
 export const Text = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};
@@ -21,14 +21,19 @@ export const Text = styled.div`
 
 export const Button = styled.button`
   border: ${ props => props.$border || 'none'};
-  background-color: ${ props => props.$backgroundColor || WHITE};
-  height: ${ props => props.$height || 'auto'};
+  background-color: ${ props => props.$backgroundColor || NAVY};
+  height: ${ props => props.$height || '40px'};
   width: ${ props => props.$width || 'auto'};
   padding: ${ props => props.$padding || '10px 20px'};
-  border-radius: ${ props => props.$radius || '30px'};
+  border-radius: ${ props => props.$radius || '10px'};
   margin: ${ props => props.$margin || '0'};
   cursor: pointer;
-  color: ${ props => props.$color || 'black'};
+  ${ props => FONT_WEIGHT[props.$weight] || FONT_WEIGHT.SEMIBOLD};
+  color: ${ props => props.$color || WHITE};
+  &:disabled {
+    background-color: ${GRAY2};
+    color: ${WHITE};
+  }
 `;
 
 export const Input = styled.input`
@@ -39,6 +44,23 @@ export const Input = styled.input`
   padding: 0 19px;
   &:focus {
     outline: none;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  padding: ${ props => props.$padding || '0'};
+  margin: ${ props => props.$margin || '0'};
+  resize: none;
+  background-color: ${GRAY0};
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  outline: none;
+  height: 166px; 
+  font-size: 12px;
+  color: ${BLACK};
+  &::placeholder {
+    color: ${GRAY3};
   }
 `;
 
