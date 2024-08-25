@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import TicketBookHeader from "../components/pages/ticketBook/TicketBookHeader";
-import EmptyTicketBookList from "../components/pages/ticketBook/EmptyTicketBookList";
+import TicketBookList from "../components/pages/ticketBook/TicketBookList";
 import Navigation from "../components/common/Navigation";
 import Toggle from "../components/pages/ticketBook/Toggle";
+import Calendar from "../components/pages/ticketBook/Calendar";
 import { Div } from "../components/common/div";
 
 const TicketBook = () => {
   const [isBook, setIsBook] = useState(true);
+  
   return (
     <>
       <TicketBookHeader />
@@ -17,9 +19,12 @@ const TicketBook = () => {
         />
       </Div>
       {isBook ? (
-        <EmptyTicketBookList />
+        <TicketBookList />
+        // <EmptyTicketBookList />
       ) : (
-        <></>
+        <>
+        <Calendar />
+        </>
       )}
       <Navigation />
     </>
