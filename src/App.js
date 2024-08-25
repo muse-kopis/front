@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Div } from "./components/common/div";
 import { GRAY3 } from "./constants/color";
-import { Main, Detail, Favorite, Search, CreateBook } from "./pages";
+import { Main, Detail, Favorite, Search, CreateBook, TicketBook } from "./pages";
 
 const App = () => {
   return(
@@ -13,6 +13,7 @@ const App = () => {
           <Route path="/detail/:performanceId" element={<Detail />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/ticket" element={<TicketBook />} />
           <Route path="/create-book/:performanceId" element={<CreateBook />} />
         </Routes>
       </Div>
