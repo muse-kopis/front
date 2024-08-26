@@ -14,6 +14,7 @@ const Login = () => {
 
   return (
     <Div>
+      카카오 로그인
       <Button onClick={handleLogin}>
         <img src="/assets/kakao_login_medium_wide.png" alt="button" />
       </Button>
