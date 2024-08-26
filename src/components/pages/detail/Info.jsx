@@ -10,6 +10,7 @@ const Title = styled(Text)`
   color: ${GRAY4};
   width: 50px;
   text-align: start;
+  min-width: 50px;
 `;
 
 const Info = ({ setLike, data }) => {
@@ -27,7 +28,7 @@ const Info = ({ setLike, data }) => {
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
             <Title>공연장</Title>
             <Text $size={12}>
-              {data?.entertainment}
+              {data?.venue}
             </Text>
           </Div>
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
