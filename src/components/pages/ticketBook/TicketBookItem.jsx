@@ -4,6 +4,7 @@ import EmptyTicketBookList from "./EmptyTicketBookList";
 import { Div, Text } from "../../common/div";
 import useColorThief from 'use-color-thief';
 import { GRAY2 } from "../../../constants/color";
+import PosterTemp from '../../../assets/PosterTemp.jpeg';
 
 const Poster = styled.img`
   height: 100%;
@@ -14,7 +15,7 @@ const Poster = styled.img`
 `;
 
 const TicketBookItem = () => {
-  const source = 'https://seeandyougo.com/api/images/d66061d5-6acb-4c0c-a67e-262e22e65e622024-05-31T16-53-58776381.png';
+  const source = PosterTemp;
 
   const { color } = useColorThief(source, {
     format: 'hex',

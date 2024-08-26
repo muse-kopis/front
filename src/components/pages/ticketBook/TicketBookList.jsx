@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
 import EmptyTicketBookList from "./EmptyTicketBookList";
-import { Div, Text } from "../../common/div";
-import useColorThief from 'use-color-thief';
+import { Div } from "../../common/div";
 import TicketBookItem from "./TicketBookItem";
 
 const TicketBookList = () => {
