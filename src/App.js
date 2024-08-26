@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Div } from "./components/common/div";
 import { GRAY3 } from "./constants/color";
-import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage } from "./pages";
+import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login } from "./pages";
+import { KakaoRedirectPage } from "./components/pages/login/KakaoRedirectPage";
 
 const App = () => {
   return(
@@ -17,6 +18,8 @@ const App = () => {
           <Route path="/ticket" element={<TicketBook />} />
           <Route path="/book-detail/:ticketBookId" element={<TicketBookDetail />} />
           <Route path="/create-book/:performanceId" element={<CreateBook />} />
+          {/* <Route path="/oauth/redirected/kakao" element={<KakaoRedirectPage />}></Route> */}
+          <Route path="/login" element={<Login />}></Route>
         </Routes>
       </Div>
     </BrowserRouter>
