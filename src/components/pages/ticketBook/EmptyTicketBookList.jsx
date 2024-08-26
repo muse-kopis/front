@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FavoriteIcon } from "../../../assets/icons";
+import { EmptyTicketBook } from "../../../assets/icons";
 import { GRAY4, NAVY, WHITE } from "../../../constants/color";
 import { Button, Div, Text } from "../../common/div";
 
@@ -14,15 +14,15 @@ const ListButton = styled(Button)`
   border-radius: 30px;
 `;
 
-const EmptyFavoriteList = () => {
+const EmptyTicketBookList = () => {
   return (
     <Div $flex={true} $direction='column' $margin='160px 0 0'>
-      <FavoriteIcon />
-      <Text $weight='BOLD' $margin='26px 0 8px'>저장한 공연이 없어요</Text>
-      <Text $size={12} $color={GRAY4}>내 취향인 공연을 찾아 저장해보세요</Text>
-      <ListButton>공연 둘러보러 가기</ListButton>
+      <EmptyTicketBook />
+      <Text $weight='BOLD' $margin='26px 0 8px'>기록된 공연이 없어요</Text>
+      <Text $size={12} $color={GRAY4}>내가 본 공연을 티켓북으로 남겨 추억해보세요</Text>
+      <ListButton>공연 기록하고 티켓북 만들기</ListButton>
     </Div>
   )
 }
 
-export default EmptyFavoriteList;
+export default EmptyTicketBookList;
