@@ -9,13 +9,13 @@ export const FONT_WEIGHT = {
 
 export const CURATION_FEED = {
   curation1: {
-    title: '님이 좋아할만한 뮤지컬 🪄'
+    title: '님의 취향에 딱 맞는 작품이에요'
   },
   curation2: {
-    title: '님이 좋아할만한 연극 🎭'
+    title: '지금 공연 중인 작품이에요 🎵'
   },
   curation3: {
-    title: '님이 좋아할만한 콘서트 🎤'
+    title: '여름에 보기 좋은 시원하고 재밌는 작품이에요 🌊'
   },
 }
 

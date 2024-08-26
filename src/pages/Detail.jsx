@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DetailHeader from '../components/pages/detail/DetailHeader';
 import DetailTab from '../components/pages/detail/DetailTab';
@@ -6,6 +6,8 @@ import { Text, Div } from '../components/common/div';
 import { useDetail } from '../hooks/DetailHooks';
 import Info from '../components/pages/detail/Info';
 import Review from '../components/pages/detail/Review';
+import { useLocation } from 'react-router-dom';
+import { getDetailPerformanceApi } from '../api/performanceApi';
 
 const Poster = styled.img`
   width: 165px;
@@ -14,18 +16,36 @@ const Poster = styled.img`
 
 const Detail = () => {
   const { setLike } = useDetail();
-
+  const id = useLocation().state.performanceId;
   const [tab, setTab] = useState('info');
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchDetail = async (performanceId) => {
+      const response = await getDetailPerformanceApi(performanceId);
+      setData(response.data);
+    };
+    fetchDetail(id);
+  }, [id])
+
+
   return (
     <>
       <DetailHeader />
-      <Div $flex={true} $direction='column' $margin='10px 0 0' className='dffdfdf'>
-        <Poster src='https://i.namu.wiki/i/d0j_4R6eZ_ca-kbP9vcpnp-8gZ8exx2j4zG07UecDnnQmNQNGdBBp9nHhj50DtiS4XHdX_aqlpYTvio82b_IAKA4NnviWFCk9aKdMu7ok2BJSDW4iBxQp9F8DddvG4vExKTflCjUhCnqAU7X4d4ZL10yoou-3a5eHjGfNMEsG-A.webp' />
-        <Text $size={17} $weight='SEMIBOLD' $margin='12px 0 10px 0'>시카고</Text>
+      <Div $flex={true} $direction='column' $margin='10px 0 0'>
+        <Poster 
+          src={data?.poster}
+        />
+        <Text $size={17} $weight='SEMIBOLD' $margin='12px 0 10px 0'>
+          {data?.performanceName}
+        </Text>
         <DetailTab type={tab} setTab={setTab} />
         {tab === 'info' ? 
-          <Info setLike={setLike} /> 
-          : <Review />
+          <Info 
+            data={data}
+            setLike={setLike} 
+          /> 
+          : <Review id={id} />
         }
       </Div>
     </>
