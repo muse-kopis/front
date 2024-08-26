@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Div } from "../components/common/div";
-import { useAuth } from "../hooks/AuthHooks";
+import { API_BASE } from "../api/base";
 
 const Button = styled.button`
   border: none;
@@ -10,11 +10,12 @@ const Button = styled.button`
 `;
 
 const Login = () => {
-  const { handleLogin } = useAuth();
+  const handleLogin = () => {
+    window.location.href = API_BASE + '/oauth/kakao';
+  }
 
   return (
     <Div>
-      카카오 로그인
       <Button onClick={handleLogin}>
         <img src="/assets/kakao_login_medium_wide.png" alt="button" />
       </Button>
