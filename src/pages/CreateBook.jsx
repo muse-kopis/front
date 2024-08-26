@@ -115,7 +115,7 @@ const CreateBook = () => {
               activeColor={NAVY}
               value={sendData.star}
             />
-            <LockIcon isLock={sendData.visible} setSendData={setSendData} />
+            <LockIcon isLock={!sendData.visible} setSendData={setSendData} />
           </Div>
           <TextArea 
             type='text' 

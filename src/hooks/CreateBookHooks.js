@@ -14,7 +14,7 @@ export const useCreateBook = (id) => {
     castMembers: '',
     content: '',
     star: 0,
-    visible: false,
+    visible: true,
     photos: []
   });
 
@@ -57,7 +57,7 @@ export const useCreateBook = (id) => {
     try {
       const response = await postTicketBookApi(formData);
       if (response.status === 200 || response.status === 201) {
-        navigate('/ticketbook');
+        navigate('/ticket');
       }
     } catch (error) {
       console.error(error);
