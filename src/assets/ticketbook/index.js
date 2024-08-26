@@ -10,3 +10,5 @@ export { BarcodeCover } from './BarcodeCover';
 export { ReactComponent as BarcodeBigImage } from './BarcodeBigImage.svg';
 export { ReactComponent as EmptyStarBigIcon } from './EmptyStarBigIcon.svg';
 export { ReactComponent as StarBigIcon } from './StarBigIcon.svg';
+export { ReactComponent as NextArrow } from './NextArrow.svg';
+export { ReactComponent as PrevArrow } from './PrevArrow.svg';

@@ -5,7 +5,8 @@ import { TicketBookCover } from '../../../assets/ticketbook';
 import Ticket from './Ticket';
 import Polaroid from './Polaroid';
 import Receipt from './Receipt';
-// import TicketModal from '../../modal/TicketModal';
+import TicketModal from '../../modal/TicketModal';
+import ImageModal from '../../modal/ImageModal';
 // import ReceiptModal from '../../modal/ReceiptModal';
 
 const Book = styled(Div)`
@@ -27,6 +28,7 @@ const TicketBook = () => {
         <Receipt />
         <Ticket />
       </Book>
+      {/* <ImageModal /> */}
       {/* <TicketModal /> */}
       {/* <ReceiptModal /> */}
     </>
