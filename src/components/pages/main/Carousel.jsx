@@ -14,7 +14,7 @@ const Image = styled.img`
   object-fit: cover;
 `;  
 
-const Carousel = ({ type, content }) => {
+const Carousel = ({ type, data, goDetail }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -23,44 +23,32 @@ const Carousel = ({ type, content }) => {
     slidesToScroll: 1,
   };
 
+  const handleClick = (performanceId) => {
+    goDetail(performanceId);
+  }
+
   return(
     <Div $flex={true} $direction='column' $align='start' $width='100%' $overflow='hidden'>
       <Text $size={16} $weight='SEMIBOLD' $margin='0 0 7px 0'>
-        규리{CURATION_FEED[type].title}
+        {CURATION_FEED[type].title}
       </Text>
       <Div $width='100%' $overflow='hidden'>
         <Slider {...settings}>
-          <Div $padding='0 12px 0 0' $cursor='pointer'>
-            <Div $cursor={true} $height='153px'>
-              <Image src='https://i.namu.wiki/i/bgZy70qoscq_PpQ8W3oWB_EZ6epg8SC3kSRkovWboXlSikxzuJl3ubMdh5Gb4Gm_s14vgTaHw0-bYvl9LwG-wpiwb9kSlZRBC9QZfMQe4e6jDWEac_XTx9lRfAjIc8aaQ66BZcTXj3Ro2D6n-SHXKw.webp'  />
-              <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
+          {data && data.map((performance, index) => (
+            <Div 
+              $padding='0 12px 0 0' 
+              $cursor={true} 
+              key={index}
+              onClick={() => handleClick(performance.id)}
+            >
+              <Div $cursor={true} $height='153px'>
+                <Image src={performance.poster}  />
+                <Text $align='start' $margin='7px 0 0' $size={12} $weight='MEDIUM'>
+                  {performance.performanceName}
+                </Text>
+              </Div>
             </Div>
-          </Div>
-          <Div $padding='0 12px 0 0' $cursor='pointer'>
-            <Div $cursor={true} $height='153px'>
-              <Image src='https://i.namu.wiki/i/bgZy70qoscq_PpQ8W3oWB_EZ6epg8SC3kSRkovWboXlSikxzuJl3ubMdh5Gb4Gm_s14vgTaHw0-bYvl9LwG-wpiwb9kSlZRBC9QZfMQe4e6jDWEac_XTx9lRfAjIc8aaQ66BZcTXj3Ro2D6n-SHXKw.webp'  />
-              <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
-            </Div>
-          </Div>
-
-          <Div $padding='0 12px 0 0' $cursor='pointer'>
-            <Div $cursor={true} $height='153px'>
-              <Image src='https://i.namu.wiki/i/bgZy70qoscq_PpQ8W3oWB_EZ6epg8SC3kSRkovWboXlSikxzuJl3ubMdh5Gb4Gm_s14vgTaHw0-bYvl9LwG-wpiwb9kSlZRBC9QZfMQe4e6jDWEac_XTx9lRfAjIc8aaQ66BZcTXj3Ro2D6n-SHXKw.webp'  />
-              <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
-            </Div>
-          </Div>
-          <Div $padding='0 12px 0 0' $cursor='pointer'>
-            <Div $cursor={true} $height='153px'>
-              <Image src='https://i.namu.wiki/i/bgZy70qoscq_PpQ8W3oWB_EZ6epg8SC3kSRkovWboXlSikxzuJl3ubMdh5Gb4Gm_s14vgTaHw0-bYvl9LwG-wpiwb9kSlZRBC9QZfMQe4e6jDWEac_XTx9lRfAjIc8aaQ66BZcTXj3Ro2D6n-SHXKw.webp'  />
-              <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
-            </Div>
-          </Div>
-          <Div $padding='0 12px 0 0' $cursor='pointer'>
-            <Div $cursor={true} $height='153px'>
-              <Image src='https://i.namu.wiki/i/bgZy70qoscq_PpQ8W3oWB_EZ6epg8SC3kSRkovWboXlSikxzuJl3ubMdh5Gb4Gm_s14vgTaHw0-bYvl9LwG-wpiwb9kSlZRBC9QZfMQe4e6jDWEac_XTx9lRfAjIc8aaQ66BZcTXj3Ro2D6n-SHXKw.webp'  />
-              <Text $align='start' $margin='7px 0 0' $size={12}>영웅</Text>
-            </Div>
-          </Div>
+          ))}
         </Slider>
       </Div>
     </Div>

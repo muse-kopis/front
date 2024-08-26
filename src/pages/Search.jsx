@@ -4,8 +4,13 @@ import SearchBar from "../components/pages/search/SearchBar";
 import SearchResult from "../components/pages/search/SearchResult";
 import Popular from "../components/pages/search/Popular";
 import Navigation from "../components/common/Navigation";
+import { usePerformance } from "../hooks/PerformanceHooks";
 
 const Search = () => {
+  const { 
+    popularPerformances,
+    handleGoDetail,
+  } = usePerformance();
   const [searchVal, setSearchVal] = useState('');
   return (
     <>
@@ -16,7 +21,10 @@ const Search = () => {
         {searchVal !== '' ? (
           <SearchResult searchVal={searchVal} />
         ) : (
-          <Popular />
+          <Popular
+            data={popularPerformances}
+            goDetail={handleGoDetail}
+          />
         )}
       </Div>
       <Navigation />

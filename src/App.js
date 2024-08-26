@@ -11,7 +11,7 @@ const App = () => {
       <Div $height='100vh' $margin='0 auto' $border={`1px solid ${GRAY3}`} $overflow='auto'>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/detail/:performanceId" element={<Detail />} />
+          <Route path="/detail" element={<Detail />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/search" element={<Search />} />
