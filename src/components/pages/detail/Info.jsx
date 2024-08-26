@@ -13,10 +13,10 @@ const Title = styled(Text)`
   min-width: 50px;
 `;
 
-const Info = ({ setLike, data }) => {
+const Info = ({ isLiked, setLike, data }) => {
   return (
     <>
-      <LikeIcon type={'like'} onClick={(checked) => setLike(checked)} />
+      <LikeIcon isLiked={isLiked} setLike={setLike} />
       <Div $width='100%' $flex={true} $direction='column'>
         <Div $width='100%' $flex={true} $backgroundColor={GRAY0} $direction='column' $gap='8px' $padding='13px 18px'>
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
