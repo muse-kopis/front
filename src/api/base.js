@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/store';
 
 export const API_BASE = 'https://likelion-running.store';
 
@@ -8,6 +9,15 @@ const axiosClient = axios.create({
   headers: {
     'Content-Type': 'application/json'
   }
+});
+
+axiosClient.interceptors.request.use((config) => {
+  const state = store.getState();
+  const token = state.user.value.token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export const get = (url, config) => {

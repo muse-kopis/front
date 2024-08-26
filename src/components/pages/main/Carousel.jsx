@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Carousel.css';
+import { useSelector } from "react-redux";
 
 const Image = styled.img`
   width: 100%;
@@ -23,6 +24,8 @@ const Carousel = ({ type, data, goDetail }) => {
     slidesToScroll: 1,
   };
 
+  const { username } = useSelector(state => state.user.value);
+
   const handleClick = (performanceId) => {
     goDetail(performanceId);
   }
@@ -30,6 +33,7 @@ const Carousel = ({ type, data, goDetail }) => {
   return(
     <Div $flex={true} $direction='column' $align='start' $width='100%' $overflow='hidden'>
       <Text $size={16} $weight='SEMIBOLD' $margin='0 0 7px 0'>
+        {type === 'curation1' && username}
         {CURATION_FEED[type].title}
       </Text>
       <Div $width='100%' $overflow='hidden'>

@@ -11,6 +11,16 @@ export const getPopularPerformanceApi = async () => {
   return response;
 };
 
+export const getRecommendPerformanceApi = async () => {
+  const response = await get(PERFORMANCE_URL.recommend);
+  return response;
+};
+
+export const getRandomPerformanceApi = async () => {
+  const response = await get(PERFORMANCE_URL.random);
+  return response;
+};
+
 export const getDetailPerformanceApi = async (performanceId) => {
   const response = await get(PERFORMANCE_URL.detail(performanceId));
   return response;

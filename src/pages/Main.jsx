@@ -9,6 +9,8 @@ import { usePerformance } from "../hooks/PerformanceHooks";
 const Main = () => {
   const { 
     nowPerformances,
+    randomPerformances,
+    recommendPerformances,
     handleGoDetail,
   } = usePerformance();
 
@@ -25,6 +27,8 @@ const Main = () => {
         />
         <Carousel 
           type='curation3'
+          data={randomPerformances}
+          goDetail={handleGoDetail}
         />
       </Div>
       <Navigation />
