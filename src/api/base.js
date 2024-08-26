@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_BASE = 'http://43.203.128.97:8080/';
+export const API_BASE = 'https://likelion-running.store';
 
 const axiosClient = axios.create({
   baseURL: API_BASE,
