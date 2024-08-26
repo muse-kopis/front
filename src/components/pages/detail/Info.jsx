@@ -12,7 +12,7 @@ const Title = styled(Text)`
   text-align: start;
 `;
 
-const Info = ({ setLike }) => {
+const Info = ({ setLike, data }) => {
   return (
     <>
       <LikeIcon type={'like'} onClick={(checked) => setLike(checked)} />
@@ -21,25 +21,25 @@ const Info = ({ setLike }) => {
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
             <Title>공연 기간</Title>
             <Text $size={12}>
-              YYYY.MM.DD ~ YYYY.MM.DD
+              {data?.startDate} ~ {data?.endDate}
             </Text>
           </Div>
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
             <Title>공연장</Title>
             <Text $size={12}>
-              YYYY.MM.DD ~ YYYY.MM.DD
+              {data?.entertainment}
             </Text>
           </Div>
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
             <Title>러닝 타임</Title>
             <Text $size={12}>
-              YYYY.MM.DD ~ YYYY.MM.DD
+            {data?.performanceTime}
             </Text>
           </Div>
           <Div $width='100%' $flex={true} $justify='start' $gap='20px'>
             <Title>관람 연령</Title>
             <Text $size={12}>
-              dd
+              {data?.limitAge}
             </Text>
           </Div>
         </Div>
@@ -48,12 +48,11 @@ const Info = ({ setLike }) => {
             출연자
           </Text>
           <Div $flex={true} $justify='start' $gap='8px 15px' $wrap={true} $maxWidth='180px'>
-            <Text $size={12} $align='start'>출연자</Text>
-            <Text $size={12} $align='start'>출연자</Text>
-            <Text $size={12} $align='start'>출연자</Text>
-            <Text $size={12} $align='start'>출연자</Text>
-            <Text $size={12} $align='start'>출연자</Text>
-            <Text $size={12} $align='start'>출연자</Text>
+            {data?.castMembers.map((cast, index) => (
+              <Text $size={12} key={index}>
+                {cast.name}
+              </Text>
+            ))}
           </Div>
         </Div>
         <Div $width='100%' $flex={true} $direction='column' $gap='8px' $padding='13px 18px' $align='start'>
@@ -61,7 +60,7 @@ const Info = ({ setLike }) => {
             제작사
           </Text>
           <Text $size={12} $align='start'>
-            신시컴퍼니
+            {data?.entertainment}
           </Text>
         </Div>
       </Div>

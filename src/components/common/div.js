@@ -4,7 +4,6 @@ import { BLACK, GRAY0, GRAY1, GRAY2, GRAY3, NAVY, WHITE } from '../../constants/
 
 export const Text = styled.div`
   font-family: ${ props => props.$font || 'Pretendard'};
-  font-size: ${ props => props.$size+'px' || '14px'};
   color: ${ props => props.$color || BLACK};
   margin: ${ props => props.$margin || '0'};
   padding: ${ props => props.$padding || '0'};
@@ -13,6 +12,7 @@ export const Text = styled.div`
   text-align: ${ props => props.$align || 'center'};
   line-height: ${ props => props.$lineHeight || 'normal'};
   ${ props => FONT_WEIGHT[props.$weight] || FONT_WEIGHT.REGULAR};
+  font-size: ${props => (props.$size ? props.$size + 'px' : '14px')};
   ${ props => props.$background && `background-color: ${props.$background};`};
   white-space: ${ props => props.$whiteSpace || 'nowrap'};
   overflow: hidden;
