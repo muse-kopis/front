@@ -13,7 +13,7 @@ const LinkButton = styled(Link)`
   height: 26px;
 `;
 
-const Links = () => {
+const Links = ({ goFavorite, logout }) => {
   return(
     <Div $flex={true} $width='100%' $direction='column' $gap='30px' $margin='50px 0 0'>
       <LinkButton to='/favorite'>
@@ -24,7 +24,7 @@ const Links = () => {
         <Text $size={12} $color={GRAY5} $weight='MEDIUM'>문의하기</Text>
         <GoIcon />
       </LinkButton>
-      <LinkButton>
+      <LinkButton onClick={() => logout()}>
         <Text $size={12} $color={GRAY5} $weight='MEDIUM'>로그아웃</Text>
         <GoIcon />
       </LinkButton>

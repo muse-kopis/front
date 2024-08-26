@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import DetailHeader from '../components/pages/detail/DetailHeader';
 import DetailTab from '../components/pages/detail/DetailTab';
@@ -6,7 +6,6 @@ import { Text, Div } from '../components/common/div';
 import { useDetail } from '../hooks/DetailHooks';
 import Info from '../components/pages/detail/Info';
 import Review from '../components/pages/detail/Review';
-import { useLocation } from 'react-router-dom';
 
 const Poster = styled.img`
   width: 165px;
