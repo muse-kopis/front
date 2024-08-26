@@ -8,13 +8,21 @@ export const usePerformance = () => {
   const [popularPerformances, setPopularPerformances] = useState([]);
 
   const fetchNowPerformances = async () => {
-    const response = await getNowPerformanceApi();
-    setNowPerformances(response.data);
+    try {
+      const response = await getNowPerformanceApi();
+      setNowPerformances(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const fetchPopularPerformances = async () => {
-    const response = await getPopularPerformanceApi();
-    setPopularPerformances(response.data);
+    try {
+      const response = await getPopularPerformanceApi();
+      setPopularPerformances(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const handleGoDetail = (performanceId) => {
