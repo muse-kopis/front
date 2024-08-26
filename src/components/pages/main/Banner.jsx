@@ -10,8 +10,18 @@ const Container = styled(Div)`
 `;
 
 const Banner = () => {
+  const handleClick = () => {
+    window.location.href = 'https://pf.kakao.com/_LxmcAn';
+  }
   return(
-    <Container $flex={true} $direction='column' $align='start' $padding='18px'>
+    <Container 
+      $flex={true} 
+      $direction='column'
+      $align='start'
+      $padding='18px' 
+      onClick={handleClick}
+      $cursor={true}
+    >
       <Text $color={WHITE} $size={16} $weight='LIGHT'>
         기다렸던 공연, 놓치지 않도록
       </Text>
