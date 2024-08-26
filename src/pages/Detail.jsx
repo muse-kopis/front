@@ -24,7 +24,7 @@ const Detail = () => {
 
   return (
     <>
-      <DetailHeader />
+      <DetailHeader id={id} />
       <Div $flex={true} $direction='column' $margin='10px 0 0'>
         <Poster 
           src={data?.poster}
