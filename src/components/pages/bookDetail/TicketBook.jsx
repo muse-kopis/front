@@ -7,7 +7,7 @@ import Polaroid from './Polaroid';
 import Receipt from './Receipt';
 import TicketModal from '../../modal/TicketModal';
 import ImageModal from '../../modal/ImageModal';
-// import ReceiptModal from '../../modal/ReceiptModal';
+import ReceiptModal from '../../modal/ReceiptModal';
 
 const Book = styled(Div)`
   background-image: url(${TicketBookCover});
