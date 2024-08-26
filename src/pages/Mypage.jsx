@@ -8,7 +8,7 @@ import { useAuth } from "../hooks/AuthHooks";
 
 const Mypage = () => {
   const { 
-    userName, 
+    username, 
     userTier, 
     handleLogout, 
   } = useAuth();
@@ -17,7 +17,7 @@ const Mypage = () => {
       <Header />
       <Div $flex={true} $padding='10px 40px' $direction='column'>
         <Profile 
-          userName={userName}
+          username={username}
           userTier={userTier}
         />
         <Links 

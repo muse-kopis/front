@@ -6,7 +6,7 @@ import { login, setToken, logout } from "../store/slices/userSlice";
 export const useAuth = () =>{
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { userName, userTier } = useSelector((state) => state.user.value);
+  const { username, userTier } = useSelector((state) => state.user.value);
 
   const handleOAuthKakao = async (code) => {
     try {
@@ -28,7 +28,7 @@ export const useAuth = () =>{
   };
 
   return {
-    userName,
+    username,
     userTier,
     handleOAuthKakao,
     handleLogout,

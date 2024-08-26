@@ -2,7 +2,7 @@ import React from 'react';
 import { Div, Text } from '../../common/div';
 import { Rank1Icon, Rank2Icon, Rank3Icon } from '../../../assets/icons';
 
-const Profile = ({ userName, userTier }) => {
+const Profile = ({ username, userTier }) => {
   return (
     <Div $flex={true} $direction='column' $margin='32px 0'>
       {userTier === 'NEWBIE' ? 
@@ -12,7 +12,7 @@ const Profile = ({ userName, userTier }) => {
       : <Rank1Icon />
       }
       <Text $margin='16px 0 4px' $size={14}  $weight='BOLD'>
-        {userName}
+        {username}
       </Text>
     </Div>
   )
