@@ -7,7 +7,6 @@ import { useDetail } from '../hooks/DetailHooks';
 import Info from '../components/pages/detail/Info';
 import Review from '../components/pages/detail/Review';
 import { useLocation } from 'react-router-dom';
-import { getDetailPerformanceApi } from '../api/performanceApi';
 
 const Poster = styled.img`
   width: 165px;
@@ -15,19 +14,14 @@ const Poster = styled.img`
 `;
 
 const Detail = () => {
-  const { setLike } = useDetail();
-  const id = useLocation().state.performanceId;
+  const { 
+    id,
+    data, 
+    isLiked, 
+    reviews,
+    handleSetLike, 
+  } = useDetail();
   const [tab, setTab] = useState('info');
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchDetail = async (performanceId) => {
-      const response = await getDetailPerformanceApi(performanceId);
-      setData(response.data);
-    };
-    fetchDetail(id);
-  }, [id])
-
 
   return (
     <>
@@ -43,9 +37,14 @@ const Detail = () => {
         {tab === 'info' ? 
           <Info 
             data={data}
-            setLike={setLike} 
+            setLike={handleSetLike} 
+            isLiked={isLiked}
           /> 
-          : <Review id={id} />
+          : 
+            <Review 
+              id={id}
+              datas={reviews}
+            />
         }
       </Div>
     </>
