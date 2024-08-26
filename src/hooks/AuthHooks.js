@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { getOAuthKakaoApi, getUserInfoApi } from "../api/authApi";
-import { useDispatch } from "react-redux";
-import { login, setToken } from "../store/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, setToken, logout } from "../store/slices/userSlice";
 
 export const useAuth = () =>{
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { userName, userTier } = useSelector((state) => state.user.value);
 
   const handleOAuthKakao = async (code) => {
     try {
@@ -21,7 +22,15 @@ export const useAuth = () =>{
     }
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return {
+    userName,
+    userTier,
     handleOAuthKakao,
+    handleLogout,
   }
 }
