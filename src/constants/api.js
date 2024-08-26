@@ -20,3 +20,10 @@ export const AUTH_URL = {
   kakao: '/oauth/login/kakao',
   userInfo: '/oauth/mypage',
 }
+
+export const TICKET_BOOK_URL = {
+  ticketBooks: '/ticketBooks',
+  ticketBookId: (ticketBookId) => `/ticketBooks/${ticketBookId}`,
+  month: '/ticketBooks/month',
+  date: '/ticketBooks/date',
+}

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Div } from "../../common/div";
 import { BackIcon, CreateTicketIcon } from "../../../assets/icons";
 
-const DetailHeader = () => {
+const DetailHeader = ({ id }) => {
   const navigation = useNavigate();
 
   const handleBack = () => {
@@ -10,7 +10,7 @@ const DetailHeader = () => {
   }
 
   const handleCreateTicket = () => {
-    navigation('/createTicket');
+    navigation('/create-book/' + id);
   }
 
   return (

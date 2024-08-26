@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CreateBookHeader from "../components/pages/createBook/CreateBookHeader";
-import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon } from "../assets/icons";
+import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon , StarIcon, EmptyStarIcon} from "../assets/icons";
 import { Div, Text, TextArea, Button } from "../components/common/div";
 import { GRAY2, GRAY3, GRAY4, GRAY5, NAVY } from "../constants/color";
 import ReactStars from "react-rating-stars-component";
+import { useParams } from "react-router-dom";
+import { useCreateBook } from "../hooks/CreateBookHooks";
 
 const Poster = styled.img`
   width: 166px;
@@ -44,33 +46,19 @@ const AddPhoto = styled(Div)`
 `;
 
 const CreateBook = () => {
-  const fileRef = useRef(null);
-  const [previewImages, setPreviewImages] = useState([]);
-  const [sendData, setSendData] = useState({
-    performanceId: '',
-    viewDate: '',
-    castMembers: '',
-    content: '',
-    star: 0,
-    visible: false,
-    photos: []
-  });
+  const id = useParams().performanceId;
 
-  const handleAddPhoto = () => {
-    fileRef.current.click();
-  };
-
-  const handleDataChange = (type, value) => {
-    setSendData({ ...sendData, [type]: value });
-  }
-
-  const handleFileChange = (e) => {
-    const fileArr = Array.from(e.target.files);
-    setSendData({ ...sendData, photos: fileArr });
-
-    const fileURLs = fileArr.map(file => URL.createObjectURL(file));
-    setPreviewImages(fileURLs);
-  }
+  const {
+    fileRef,
+    previewImages,
+    performanceData,
+    sendData,
+    handleCreate,
+    setSendData,
+    handleFileChange,
+    handleAddPhoto,
+    handleDataChange,
+  } = useCreateBook(id);
 
   useEffect(() => {
     console.log(sendData);
@@ -82,10 +70,12 @@ const CreateBook = () => {
       <Div $flex={true} $direction='column' $margin='26px 0 0'>
         <Div>
           <Poster 
-            src="https://i.namu.wiki/i/wWf_gvAGbtYPSicZAksRKhEJpQ7Uon-VpBiZkNRxLWwCsqWhCuWVKMHQjQ3bw1_Lco2APb9nh3mJUufZUfXJFGBaqrM4xtMcXCg9Q8Bbq7-ZhMYf_9QsSa82IkH_perN5uAtHMFUzGPtsqJLvP-mzQ.webp"
+            src={performanceData?.poster}
             alt="poster"
           />
-          <Text $size={14} $weight='BOLD' $margin='12px 0 0'>영웅</Text>
+          <Text $size={14} $weight='BOLD' $margin='12px 0 0'>
+            {performanceData?.performanceName}
+          </Text>
         </Div>
         <Div $width='100%' $margin='30px 0 0'>
           <InputItem>
@@ -98,7 +88,7 @@ const CreateBook = () => {
             <Div $width='43px' $grow='0'>
               <MapIcon />
             </Div>
-            <Input type="text" placeholder="장소를 입력해주세요" readOnly />
+            <Input type="text" value={performanceData?.venue} placeholder="장소를 입력해주세요" readOnly />
           </InputItem>
           <InputItem>
             <Div $width='43px' $grow='0'>
@@ -120,9 +110,8 @@ const CreateBook = () => {
               onChange={rating => handleDataChange('star', rating)}
               size={22}
               isHalf={false}
-              emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
+              emptyIcon={<EmptyStarIcon />}
+              icon={<StarIcon />}
               activeColor={NAVY}
               value={sendData.star}
             />
@@ -161,7 +150,9 @@ const CreateBook = () => {
             accept="image/*" 
             hidden 
           />
-          <Button disabled={false} $width='100%' $margin='30px 0 40px 0'>티켓북 저장하기</Button>
+          <Button disabled={false} $width='100%' $margin='30px 0 40px 0' onClick={handleCreate}>
+            티켓북 저장하기
+          </Button>
         </Div>
       </Div>
     </>
