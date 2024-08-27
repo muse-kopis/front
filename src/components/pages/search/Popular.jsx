@@ -18,9 +18,11 @@ const Popular = ({ data, goDetail }) => {
       <Div $flex={true} $justify='space-between' $padding='10px 0' $gap='16px' $wrap={true} $width='100%'>
         {data && data.map((performance, index) => (
           <Div 
+            $width='calc((100% - 32px) / 3)'
             $direction='column' 
             $align='start' 
             $cursor={true}
+            $grow='0'
             key={index} 
             onClick={() => handleClick(performance.id)}
           >
