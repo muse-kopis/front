@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Div } from "../components/common/div";
 import SearchBar from "../components/pages/search/SearchBar";
 import SearchResult from "../components/pages/search/SearchResult";
@@ -8,18 +8,26 @@ import { usePerformance } from "../hooks/PerformanceHooks";
 
 const Search = () => {
   const { 
+    searchResult,
+    searchVal,
     popularPerformances,
     handleGoDetail,
+    setSearchVal,
+    handleSearch,
   } = usePerformance();
-  const [searchVal, setSearchVal] = useState('');
+
   return (
     <>
       <Div $padding='20px 18px'>
         <SearchBar 
           setSearchVal={setSearchVal}
+          handleSearch={handleSearch}
         />
         {searchVal !== '' ? (
-          <SearchResult searchVal={searchVal} />
+          <SearchResult 
+            result={searchResult}
+            goDetail={handleGoDetail}
+          />
         ) : (
           <Popular
             data={popularPerformances}

@@ -9,6 +9,7 @@ export const PERFORMANCE_URL = {
   like: (performanceId) => `/performances/${performanceId}/like`,
   myLike: '/performances/like',
   poster: (performanceId) => `/performances/poster/${performanceId}`,
+  search: '/performances/search',
 }
 
 export const REVIEW_URL = {
