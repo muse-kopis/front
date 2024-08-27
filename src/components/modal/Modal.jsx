@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { GRAY1 } from "../../constants/color";
+import { GRAY1, DIM } from "../../constants/color";
 
 const Modal = styled.div`
   ${({ $isOpen }) => $isOpen ? `
@@ -17,6 +17,9 @@ const Modal = styled.div`
   `
     : `display: none;`
   }
+  ${({ $dim }) => $dim ? `
+    background-color: ${DIM};
+  ` : ''}
 `;
 
 export default Modal;

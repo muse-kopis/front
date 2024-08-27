@@ -4,6 +4,7 @@ import TicketBook from '../components/pages/bookDetail/TicketBook';
 import { Div } from '../components/common/div';
 import { GRAY1 } from '../constants/color';
 import { useTicketBookDetail } from '../hooks/TicketBookDetailHooks';
+import TicketBookDeleteModal from '../components/modal/TicketBookDeleteModal';
 
 const TicketBookDetail = () => {
   const {
@@ -13,6 +14,7 @@ const TicketBookDetail = () => {
     modal,
     setModal,
     goTicketBookEdit,
+    deleteTicketBook,
   } = useTicketBookDetail();
   
   return (
@@ -21,6 +23,8 @@ const TicketBookDetail = () => {
         id={id}
         data={data}
         goEdit={goTicketBookEdit}
+        modal={modal}
+        setModal={setModal}
       />
       <Div $flex={true}>
         <TicketBook
@@ -30,6 +34,11 @@ const TicketBookDetail = () => {
           color={color}
         />
       </Div>
+      <TicketBookDeleteModal 
+        isOpen={modal.delete}
+        closeModal={() => setModal({ ...modal, delete: false })}
+        handleDelete={deleteTicketBook}
+      />
     </Div>
   )
 }
