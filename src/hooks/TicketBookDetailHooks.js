@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getTicketBookDetailApi } from '../api/ticketBookApi';
+import { getTicketBookDetailApi, deleteTicketBookApi } from '../api/ticketBookApi';
 import { getPosterApi } from '../api/performanceApi';
 import useColorThief from 'use-color-thief';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ export const useTicketBookDetail = () => {
     image: false,
     ticket: false,
     receipt: false,
+    delete: false,
   });
 
   const { color } = useColorThief(posterImage, {
@@ -50,6 +51,17 @@ export const useTicketBookDetail = () => {
     }
   };
 
+  const deleteTicketBook = async () => {
+    try {
+      const response = await deleteTicketBookApi(id);
+      if (response.status === 200) {
+        navigate('/ticket');
+      } 
+    } catch (error) {
+      console.error("Error deleting ticket book:", error);
+    }
+  };
+
   const goTicketBookEdit = (data) => {
     navigate(`/create-book/${data.performanceId}`, { state: { data } });
   };
@@ -72,5 +84,6 @@ export const useTicketBookDetail = () => {
     color,
     setModal,
     goTicketBookEdit,
+    deleteTicketBook,
   };
 }

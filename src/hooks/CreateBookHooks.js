@@ -73,12 +73,12 @@ export const useCreateBook = (id) => {
 
   const handleEdit = async () => {
     const formData = new FormData();
-    if (sendData.photos.length === 0) {
-      formData.append('photos', null);
-    }
-    sendData.photos.forEach(photo => {
-      formData.append('photos', photo);
-    });
+    // if (sendData.photos.length === 0) {
+    //   formData.append('photos', null);
+    // }
+    // sendData.photos.forEach(photo => {
+    //   formData.append('photos', photo);
+    // });
     formData.append('performanceId', sendData.performanceId);
     formData.append('viewDate', sendData.viewDate);
     formData.append('castMembers', sendData.castMembers);
