@@ -8,6 +8,7 @@ const Container = styled.div`
   position: absolute;
   left: 42px;
   top: 86px;
+  cursor: pointer;
 `;
 
 const PolaroidFrame = styled.div`
@@ -30,18 +31,18 @@ const PolaroidInner = styled.img`
   margin-top: 9px;
 `;
 
-const Polaroid = () => {
+const Polaroid = ({ data, openModal }) => {
   return (
-    <Container>
+    <Container onClick={openModal}>
       <PolaroidFrame>
         <PolaroidInner 
-          src={EmptyPolariodImage} 
+          src={data?.photos[0] ? data?.photos[0].url : EmptyPolariodImage} 
           alt='폴라로이드 이미지' 
         />
       </PolaroidFrame>
       <PolaroidFrame>
         <PolaroidInner 
-          src={EmptyPolariodImage} 
+          src={data?.photos[1] ? data?.photos[1].url : EmptyPolariodImage} 
           alt='폴라로이드 이미지' 
         />
       </PolaroidFrame>

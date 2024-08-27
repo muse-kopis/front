@@ -20,17 +20,40 @@ const Book = styled(Div)`
   position: relative;
 `;
 
-const TicketBook = () => {
+const TicketBook = ({ data, color, modal, setModal }) => {
   return (
     <>
       <Book>
-        <Polaroid />
-        <Receipt />
-        <Ticket />
+        <Polaroid
+          data={data}
+          openModal={() => setModal({ ...modal, image: true })}
+        />
+        <Receipt
+          data={data}
+          openModal={() => setModal({ ...modal, receipt: true })}
+        />
+        <Ticket 
+          data={data}
+          color={color}
+          openModal={() => setModal({ ...modal, ticket: true })}
+        />
       </Book>
-      {/* <ImageModal /> */}
-      {/* <TicketModal /> */}
-      {/* <ReceiptModal /> */}
+      <ImageModal 
+        isOpen={modal.image && data?.photos.length > 0}
+        data={data}
+        closeModal={() => setModal({ ...modal, image: false })}
+      />
+      <TicketModal 
+        isOpen={modal.ticket}
+        data={data}
+        color={color}
+        closeModal={() => setModal({ ...modal, ticket: false })}
+      />
+      <ReceiptModal
+        isOpen={modal.receipt}
+        data={data}
+        closeModal={() => setModal({ ...modal, receipt: false })}
+      />
     </>
   )
 }

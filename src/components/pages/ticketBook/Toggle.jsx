@@ -9,6 +9,7 @@ const ToggleButton = styled.button`
   border-radius: 50px;
   border: none;
   cursor: pointer;
+  background-color: ${GRAY1};
   color: ${GRAY3};
   ${({ $toggle }) => $toggle && `
     background-color: ${NAVY};

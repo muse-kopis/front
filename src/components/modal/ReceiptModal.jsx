@@ -33,36 +33,45 @@ const StarContainer = styled(Div)`
   gap: 4px;
 `;
 
-const ReceiptModal = () => {
+const Title = styled(Text)`
+  font-size: 10px;
+  text-align: start;
+  max-width: 190px;
+`;
+
+const ReceiptModal = ({ isOpen, closeModal, data }) => {
   return (
-    <Modal>
+    <Modal $isOpen={isOpen}>
       <Container >
         <TitleContainer>
-          <Text $size={10} $align='start'>
-            2024. 08. 24
-          </Text>
-          <Text $size={10} $align='start'>
-            제목제목
-          </Text>
-          <Text $size={10} $align='start'>
-            시어터
-          </Text>
-          <Text $size={10} $align='start'>
-            출연진1 ..
-          </Text>
+          <Title>
+            {data?.viewDate}
+          </Title>
+          <Title>
+            {data?.performanceName}
+          </Title>
+          <Title>
+            {data?.venue}
+          </Title>
+          <Title>
+            {data?.reviewResponse?.castMembers}
+          </Title>
         </TitleContainer>
         <Text $width='228px' $height='132px' $size={12} $align='start' $whiteSpace='wrap' style={{position: 'absolute', top: '202px', left: '35px'}}>
-          너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 그래서 너무너무 좋았따.너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다.  너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 
+          {data?.reviewResponse?.content}
         </Text>
         <StarContainer>
-          <StarBigIcon />
-          <StarBigIcon />
-          <StarBigIcon />
-          <StarBigIcon />
-          <EmptyStarBigIcon />
+          {Array.from({ length: data?.reviewResponse.star }, (_, i) => (
+            <StarBigIcon key={i} />
+          ))}
+          {Array.from({ length: 5 - data?.reviewResponse.star }, (_, i) => (
+            <EmptyStarBigIcon key={i} />
+          ))}
         </StarContainer>
       </Container>
-      <Text $size={12} style={{ cursor: 'pointer'}}>닫기</Text>
+      <Text $size={12} style={{ cursor: 'pointer'}} onClick={closeModal}>
+        닫기
+      </Text>
     </Modal>
   )
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { BarcodeImage, TicketSlotImage } from "../../../assets/ticketbook";
-import useColorThief from 'use-color-thief';
-import PosterTemp from '../../../assets/PosterTemp.jpeg';
 
 const Container = styled.div`
   height: 94px;
@@ -11,6 +9,7 @@ const Container = styled.div`
   left: 57px;
   bottom: 46px;
   flex-shrink: 0;
+  cursor: pointer;
 `;
 
 const TicketContainer = styled.div`
@@ -59,21 +58,13 @@ const TicketSlot = styled.img`
   flex-shrink: 0;
 `;
 
-const Ticket = () => {
-  const source = PosterTemp;
-
-  const { color } = useColorThief(source, {
-    format: 'hex',
-    colorCount: 10,
-    quality: 10,
-  });
-
+const Ticket = ({ data, color, openModal }) => {
   return (
-    <Container >
+    <Container onClick={openModal}>
       <TicketContainer>
         <TicketPoster>
           <Poster 
-            src={source}
+            src={data?.poster}
           />
         </TicketPoster>
         <Barcode $background={color}>

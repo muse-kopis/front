@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import EmptyTicketBookList from "./EmptyTicketBookList";
 import { Div, Text } from "../../common/div";
-import useColorThief from 'use-color-thief';
 import { GRAY2 } from "../../../constants/color";
-import PosterTemp from '../../../assets/PosterTemp.jpeg';
+import useColorThief from "use-color-thief";
+
+const Container = styled(Div)`
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 0;
+  width: calc((100% - 16px) / 2);
+  cursor: pointer;
+`;
 
 const Poster = styled.img`
   height: 100%;
@@ -14,23 +22,39 @@ const Poster = styled.img`
   border-right: 2px solid ${GRAY2};
 `;
 
-const TicketBookItem = () => {
-  const source = PosterTemp;
+const TicketBookItem = ({ data, getPoster, goDetail }) => {
+  const imgRef = useRef(null);
+  const [poster, setPoster] = useState('#111');
 
-  const { color } = useColorThief(source, {
+  useEffect(() => {
+    const fetchPosterImage = async () => {
+      const response = await getPoster(data.performanceId);
+      setPoster(response);
+    }
+    fetchPosterImage();
+  }, [data?.performanceId]);
+
+  const { color } = useColorThief(poster, {
     format: 'hex',
     colorCount: 10,
     quality: 10,
   });
 
   return (
-    <Div $height='230px' $flex={true} $direction='column' $justify='space-between' $grow='0' style={{ width: 'calc((100% - 16px) / 2)'}}>
+    <Container onClick={() => goDetail(data?.id)}>
       <Div $height='200px' $flex={true} $grow='0' >
         <Div $backgroundColor={color} $width='10px' $height='100%' $grow='0' style={{ borderTopLeftRadius: 3, borderBottomLeftRadius: 3 }} />
-        <Poster src={source} alt='티켓북 이미지' style={{ height: '100%', width: 'calc(100% - 11px)'}} />
+        <Poster 
+          src={data?.poster} 
+          alt="티켓북 이미지" 
+          ref={imgRef} 
+          style={{ height: "100%", width: "calc(100% - 11px)" }} 
+        />
       </Div>
-      <Text $size={12} $weight='MEDIUM'>젠틀맨스가이드</Text>
-    </Div>
+      <Text $size={12} $weight='MEDIUM'>
+        {data?.performanceName}
+      </Text>
+    </Container>
   )
 }
 

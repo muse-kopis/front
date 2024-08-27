@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TicketBookHeader from "../components/pages/ticketBook/TicketBookHeader";
 import TicketBookList from "../components/pages/ticketBook/TicketBookList";
 import Navigation from "../components/common/Navigation";
 import Toggle from "../components/pages/ticketBook/Toggle";
 import Calendar from "../components/pages/ticketBook/Calendar";
 import { Div } from "../components/common/div";
+import { useTicketBook } from "../hooks/TicketBookHooks";
 
 const TicketBook = () => {
+  const {
+    datas,
+    fetchPosterImage,
+    goTicketBookDetail,
+  } = useTicketBook();
+
   const [isBook, setIsBook] = useState(true);
   
   return (
@@ -19,8 +26,11 @@ const TicketBook = () => {
         />
       </Div>
       {isBook ? (
-        <TicketBookList />
-        // <EmptyTicketBookList />
+        <TicketBookList
+          datas={datas}
+          getPoster={fetchPosterImage}
+          goDetail={goTicketBookDetail}
+        />
       ) : (
         <>
         <Calendar />
