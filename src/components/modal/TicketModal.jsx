@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { BarcodeBigImage, BarcodeCover } from "../../assets/ticketbook";
-import useColorThief from 'use-color-thief';
-import PosterTemp from '../../assets/PosterTemp.jpeg';
 import Modal from "./Modal";
 import { Text } from "../common/div";
 
@@ -39,21 +37,13 @@ const Poster = styled.img`
   height: 100%;
 `;
 
-const TicketModal = () => {
-  const source = PosterTemp;
-
-  const { color } = useColorThief(source, {
-    format: 'hex',
-    colorCount: 10,
-    quality: 10,
-  });
-
+const TicketModal = ({ isOpen, closeModal,color,  data }) => {
   return (
-    <Modal>
+    <Modal $isOpen={isOpen}>
       <Container >
         <TicketPoster>
           <Poster 
-            src={source}
+            src={data?.poster}
           />
         </TicketPoster>
         <Barcode>
@@ -61,7 +51,9 @@ const TicketModal = () => {
           <StyledBarcode />
         </Barcode>
       </Container>
-      <Text $size={12} $margin='20px 0 0' style={{ cursor: 'pointer'}}>닫기</Text>
+      <Text $size={12} $margin='20px 0 0' style={{ cursor: 'pointer'}} onClick={closeModal}>
+        닫기
+      </Text>
     </Modal>
   )
 }

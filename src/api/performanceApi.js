@@ -1,4 +1,4 @@
-import { post, get, del } from './base';
+import { post, get, del, getBlob } from './base';
 import { PERFORMANCE_URL } from '../constants/api';
 
 export const getNowPerformanceApi = async () => {
@@ -45,3 +45,8 @@ export const getMyLikePerformanceApi = async () => {
   const response = await get(PERFORMANCE_URL.myLike);
   return response;
 };
+
+export const getPosterApi = async (performanceId) => {
+  const response = await getBlob(PERFORMANCE_URL.poster(performanceId));
+  return response;
+}

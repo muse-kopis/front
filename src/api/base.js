@@ -19,6 +19,15 @@ const formDataClient = axios.create({
   }
 });
 
+const blobClient = axios.create({
+  baseURL: API_BASE,
+  timeout: 50000,
+  responseType: 'blob',
+  headers: {
+    'Content-Type': 'image/gif'
+  }
+});
+
 axiosClient.interceptors.request.use((config) => {
   const state = store.getState();
   const token = state.user.value.token;
@@ -29,6 +38,15 @@ axiosClient.interceptors.request.use((config) => {
 });
 
 formDataClient.interceptors.request.use((config) => {
+  const state = store.getState();
+  const token = state.user.value.token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+blobClient.interceptors.request.use((config) => {
   const state = store.getState();
   const token = state.user.value.token;
   if (token) {
@@ -59,5 +77,10 @@ export const patch = async (url, data) => {
 
 export const formDataPost = async (url, data) => {
   const response = await formDataClient.post(url, data);
+  return response;
+}
+
+export const getBlob = async (url) => {
+  const response = await blobClient.get(url);
   return response;
 }

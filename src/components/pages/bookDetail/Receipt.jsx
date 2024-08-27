@@ -13,6 +13,7 @@ const Container = styled.div`
   background-position: center;
   width: 125px;
   height: 210px;
+  cursor: pointer;
 `;
 
 const StarRate = styled(StarSmallIcon)`
@@ -27,32 +28,39 @@ const EmptStarRate = styled(EmptyStarSmallIcon)`
   margin-right: 1px;
 `;
 
-const Receipt = () => {
+const Title = styled(Text)`
+  font-size: 3.5px;
+  text-align: start;
+  max-width: 75px;
+`;
+
+const Receipt = ({ data, openModal }) => {
   return (
-    <Container>
+    <Container onClick={openModal}>
       <Div $flex={true} $direction='column' $gap='1.6px' $align='start' style={{ position: 'absolute', top: '38px', left: '24px'}}>
-        <Text $size={3.5} $align='start'>
-          2024. 08. 24
-        </Text>
-        <Text $size={3.5} $align='start'>
-          제목제목
-        </Text>
-        <Text $size={3.5} $align='start'>
-          시어터
-        </Text>
-        <Text $size={3.5} $align='start'>
-          출연진1 ..
-        </Text>
+        <Title>
+          {data?.viewDate}
+        </Title>
+        <Title>
+          {data?.performanceName}
+        </Title>
+        <Title>
+          {data?.venue}
+        </Title>
+        <Title>
+          {data?.reviewResponse.castMembers}
+        </Title>
       </Div>
       <Text $width='84px' $height='50px' $size={3.5} $align='start' $whiteSpace='wrap' style={{position: 'absolute', top: '74px', left: '12px'}}>
-        너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 그래서 너무너무 좋았따.너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다.  너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 너무너무 좋았다. 
+        {data?.reviewResponse.content}
       </Text>
       <Div style={{ position: 'absolute', bottom: '66px', left: '32px'}}>
-        <StarRate />
-        <StarRate />
-        <StarRate />
-        <StarRate />
-        <EmptStarRate />
+        {Array.from({ length: data?.reviewResponse.star }, (_, i) => (
+          <StarRate key={i} />
+        ))}
+        {Array.from({ length: 5 - data?.reviewResponse.star }, (_, i) => (
+          <EmptStarRate key={i} />
+        ))}
       </Div>
     </Container>
   )

@@ -8,6 +8,7 @@ export const PERFORMANCE_URL = {
   popular: '/performances/popular',
   like: (performanceId) => `/performances/${performanceId}/like`,
   myLike: '/performances/like',
+  poster: (performanceId) => `/performances/poster/${performanceId}`,
 }
 
 export const REVIEW_URL = {
@@ -23,7 +24,7 @@ export const AUTH_URL = {
 
 export const TICKET_BOOK_URL = {
   ticketBooks: '/ticketBooks',
-  ticketBookId: (ticketBookId) => `/ticketBooks/${ticketBookId}`,
+  detail: (ticketBookId) => `/ticketBooks/${ticketBookId}`,
   month: '/ticketBooks/month',
   date: '/ticketBooks/date',
 }

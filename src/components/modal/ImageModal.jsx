@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { BarcodeBigImage, BarcodeCover } from "../../assets/ticketbook";
-import useColorThief from 'use-color-thief';
-import PosterTemp from '../../assets/PosterTemp.jpeg';
 import Modal from "./Modal";
 import { Text } from "../common/div";
 import ImageCarousel from "../pages/bookDetail/ImageCarousel";
@@ -13,13 +10,22 @@ const Container = styled.div`
   padding: 0 48px;
 `;
 
-const ImageModal = () => {
+const ImageModal = ({ isOpen, closeModal, data }) => {
   return (
-    <Modal>
-      <Container className="ㅎㅇㅎㅇㅎㅇㅎㅎㅇ" >
-        <ImageCarousel />
+    <Modal $isOpen={isOpen}>
+      <Container>
+        <ImageCarousel
+          photos={data?.photos}
+        />
       </Container>
-      <Text $size={12} $margin='20px 0 0' style={{ cursor: 'pointer'}}>닫기</Text>
+      <Text 
+        $size={12} 
+        $margin='20px 0 0' 
+        style={{ cursor: 'pointer'}} 
+        onClick={closeModal}
+      >
+        닫기
+      </Text>
     </Modal>
   )
 }
