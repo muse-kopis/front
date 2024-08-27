@@ -1,4 +1,4 @@
-export const MOBILE_SIZE = '390px';
+export const MOBILE_SIZE = '420px';
 
 export const FONT_WEIGHT = {
   LIGHT: {fontWeight: 300},

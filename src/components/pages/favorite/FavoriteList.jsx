@@ -12,7 +12,7 @@ const Poster = styled.img`
 const FavoriteList = ({ datas = [] }) => {
   const { handleGoDetail } = usePerformance();
   return(
-    <Div $padding='12px 18px' $flex={true} $width='100%' $direction='column' $align='start' $gap='14px'>
+    <Div $margin='47px 0 0' $padding='12px 18px' $flex={true} $width='100%' $direction='column' $align='start' $gap='14px'>
       {datas.map((data, index) => (
         <Div 
           key={index} 

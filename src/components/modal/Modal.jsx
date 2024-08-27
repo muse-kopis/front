@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { GRAY1, DIM } from "../../constants/color";
 
 const Modal = styled.div`
+  z-index: 10;
   ${({ $isOpen }) => $isOpen ? `
     position: fixed;
     top: 0;

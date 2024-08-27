@@ -23,7 +23,7 @@ const TicketBook = () => {
   return (
     <>
       <TicketBookHeader />
-      <Div $flex={true} $padding='0 18px'>
+      <Div $flex={true} $padding='0 18px' $margin='47px 0 0'>
         <Toggle
           isBook={isBook}
           setIsBook={setIsBook}         

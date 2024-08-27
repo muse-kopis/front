@@ -16,7 +16,7 @@ const Book = styled(Div)`
   flex-grow: 0;
   width: 312px;
   height: 420px;
-  margin: 67px 0;
+  margin: 114px 0;
   position: relative;
 `;
 

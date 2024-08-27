@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Div } from "./components/common/div";
-import { GRAY3 } from "./constants/color";
 import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login } from "./pages";
 import KakaoRedirectPage from "./components/pages/login/KakaoRedirectPage";
 import { PrivateRoute } from "./components/auth/PrivateRoute";
@@ -9,7 +8,7 @@ import { PrivateRoute } from "./components/auth/PrivateRoute";
 const App = () => {
   return(
     <BrowserRouter>
-      <Div $height='100vh' $margin='0 auto' $border={`1px solid ${GRAY3}`} $overflow='auto'>
+      <Div $height='100vh' $margin='0 auto' $overflow='auto'>
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Main />} />

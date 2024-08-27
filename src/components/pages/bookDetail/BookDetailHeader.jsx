@@ -1,7 +1,20 @@
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Div, Text } from "../../common/div";
 import { BackIcon } from "../../../assets/icons";
 import { DeleteIcon, EditIcon } from "../../../assets/ticketbook";
+import { GRAY1 } from "../../../constants/color";
+
+const Container = styled(Div)`
+  position: fixed;
+  height: 47px;
+  display: flex;
+  justify-content: center;
+  padding: 0 18px;
+  background-color: ${GRAY1};
+  width: 100%;
+  z-index: 1;
+`;
 
 const BookDetailHeader = ({ goEdit, data, modal, setModal }) => {
   const navigation = useNavigate();
@@ -11,7 +24,7 @@ const BookDetailHeader = ({ goEdit, data, modal, setModal }) => {
   }
 
   return (
-    <Div $height='47px' $flex={true} $padding='0 18px' $justify='center'>
+    <Container>
       <BackIcon onClick={handleBack} style={{cursor: 'pointer', marginRight: 'auto'}} />
       <Text $size={14} $weight='MEDIUM'>티켓북</Text>
       <Div style={{ marginLeft: 'auto'}} $grow='0' $gap='14px' $flex={true}>
@@ -24,7 +37,7 @@ const BookDetailHeader = ({ goEdit, data, modal, setModal }) => {
           style={{cursor: 'pointer'}} 
         />
       </Div>
-    </Div>
+    </Container>
   )
 }
 

@@ -16,7 +16,7 @@ const ListButton = styled(Button)`
 
 const EmptyFavoriteList = () => {
   return (
-    <Div $flex={true} $direction='column' $margin='160px 0 0'>
+    <Div $flex={true} $direction='column' $margin='200px 0 0'>
       <FavoriteIcon />
       <Text $weight='BOLD' $margin='26px 0 8px'>저장한 공연이 없어요</Text>
       <Text $size={12} $color={GRAY4}>내 취향인 공연을 찾아 저장해보세요</Text>

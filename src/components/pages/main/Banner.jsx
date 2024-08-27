@@ -7,6 +7,7 @@ const Container = styled(Div)`
   background: rgb(0,32,67);
   background: linear-gradient(90deg, rgba(0,32,67,1) 0%, rgba(0,82,169,1) 100%);
   height: 100px;
+  margin-top: 47px;
 `;
 
 const Banner = () => {

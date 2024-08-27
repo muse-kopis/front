@@ -66,7 +66,7 @@ const CreateBook = () => {
   return (
     <>
       <CreateBookHeader />
-      <Div $flex={true} $direction='column' $margin='26px 0 0'>
+      <Div $flex={true} $direction='column' $margin='73px 0 0'>
         <Div>
           <Poster 
             src={performanceData?.poster}

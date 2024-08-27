@@ -11,7 +11,6 @@ const Container = styled(Div)`
   bottom: 0;
   display: flex;
   width: 100%;
-  max-width: 388px;
   flex-grow: 1;
   height: 55px;
   border-top: solid 1px ${GRAY3};
