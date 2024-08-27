@@ -16,6 +16,8 @@ const Search = () => {
     handleSearch,
   } = usePerformance();
 
+  console.log(popularPerformances)
+
   return (
     <>
       <Div $padding='20px 18px'>
