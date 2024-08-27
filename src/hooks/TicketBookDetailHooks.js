@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { getTicketBookDetailApi } from '../api/ticketBookApi';
 import { getPosterApi } from '../api/performanceApi';
 import useColorThief from 'use-color-thief';
+import { useNavigate } from 'react-router-dom';
 
 export const useTicketBookDetail = () => {
+  const navigate = useNavigate();
   const id = useParams().ticketBookId;
   const [data, setData] = useState(null);
   const [performanceId, setPerformanceId] = useState(null);
@@ -48,6 +50,10 @@ export const useTicketBookDetail = () => {
     }
   };
 
+  const goTicketBookEdit = (data) => {
+    navigate(`/create-book/${data.performanceId}`, { state: { data } });
+  };
+
   useEffect(() => {
     getTicketBookDetail(id);
   }, [id]);
@@ -60,9 +66,11 @@ export const useTicketBookDetail = () => {
   }, [performanceId]);
 
   return {
+    id,
     modal, 
-    setModal,
     data, 
     color,
+    setModal,
+    goTicketBookEdit,
   };
 }

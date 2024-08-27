@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import EmptyTicketBookList from "./EmptyTicketBookList";
 import { Div } from "../../common/div";
 import TicketBookItem from "./TicketBookItem";
 
 const TicketBookList = ({ datas = [], getPoster, goDetail }) => {
   return (
-    <Div $padding='17px 32px'>
+    <Div $padding='17px 32px' $margin='0 0 60px'>
       <Div $flex={true} $justify='start' $gap='32px 16px' $wrap={true}>
         {datas.length === 0 ? 
           <EmptyTicketBookList /> :

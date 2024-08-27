@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TicketBookHeader from "../components/pages/ticketBook/TicketBookHeader";
 import TicketBookList from "../components/pages/ticketBook/TicketBookList";
 import Navigation from "../components/common/Navigation";

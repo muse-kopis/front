@@ -32,6 +32,7 @@ const TicketBookItem = ({ data, getPoster, goDetail }) => {
       setPoster(response);
     }
     fetchPosterImage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.performanceId]);
 
   const { color } = useColorThief(poster, {

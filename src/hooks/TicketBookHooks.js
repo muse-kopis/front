@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTicketBooksApi, getTicketBookDetailApi } from "../api/ticketBookApi";
+import { getTicketBooksApi } from "../api/ticketBookApi";
 import { getPosterApi } from "../api/performanceApi";
 import { useNavigate } from "react-router-dom";
 
