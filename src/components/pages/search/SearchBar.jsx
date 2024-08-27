@@ -14,14 +14,18 @@ const SearchInput = styled.input`
   }
 `;  
 
-const SearchBar = ({ setSearchVal }) => {
+const SearchBar = ({ setSearchVal, handleSearch }) => {
   return (
     <Div $backgroundColor={GRAY1} $radius='8px' $height='40px' $flex={true} $justify='start' $padding='0 15px' $gap='10px'>
-      <SearchBarIcon />
       <SearchInput 
-        type="text" 
+        type="search"
+        name='performance-search' 
         placeholder="작품명을 입력하세요" 
         onChange={(e) => setSearchVal(e.target.value)}
+      />
+      <SearchBarIcon
+        onClick={handleSearch}
+        style={{ cursor: 'pointer' }}
       />
     </Div>
   )

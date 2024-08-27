@@ -62,3 +62,14 @@ img {
 .star-ratings {
   display: flex !important;
 }
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+    -webkit-appearance: none;
+}
+
+input::-webkit-autofill {
+  background-color: transparent !important;
+}

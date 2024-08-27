@@ -49,4 +49,9 @@ export const getMyLikePerformanceApi = async () => {
 export const getPosterApi = async (performanceId) => {
   const response = await getBlob(PERFORMANCE_URL.poster(performanceId));
   return response;
-}
+};
+
+export const getSearchPerformanceApi = async (search) => {
+  const response = await get(PERFORMANCE_URL.search, {params: {search}});
+  return response;
+};
