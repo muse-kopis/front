@@ -16,12 +16,9 @@ const Review = ({ datas = [] }) => {
             ))}
           </Div>
           <Div $flex={true} $align='start' $justify='start' $gap='4px'>
-            {data?.castMembers.map((cast, index) => (
-              <Text $size={12} $align='start' $color={GRAY4} key={index}>
-                {cast.name}
-                {index !== data?.castMembers.length - 1 && ','}
-              </Text>
-            ))}
+            <Text $size={12} $align='start' $color={GRAY4} key={index}>
+              {data?.castMembers}
+            </Text>
           </Div>
           <Text $margin='3px 0 0' $whiteSpace='wrap' $align='start'>
             {data?.content}
