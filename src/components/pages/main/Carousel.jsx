@@ -38,7 +38,7 @@ const Carousel = ({ type, data, goDetail }) => {
       </Text>
       <Div $width='100%' $overflow='hidden'>
         <Slider {...settings}>
-          {data && data.map((performance, index) => (
+          {data.length > 0 && data.map((performance, index) => (
             <Div 
               $padding='0 12px 0 0' 
               $cursor={true} 

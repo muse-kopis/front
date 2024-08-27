@@ -17,11 +17,13 @@ const SearchResult = ({ result, goDetail }) => {
         검색된 공연이 없어요
       </Text>
       ) : (
-        <Div $flex={true} $direction='column' $padding='2px 0' $align='start' $cursor={true}>
+        <Div $flex={true} $direction='column' $padding='2px 0' $width='100%' $align='start' $cursor={true}>
           {result.map((item, index) => (
             <Div 
               $flex={true} 
               $margin='16px 0 0' 
+              $justify='start'
+              $width='100%'
               key={index}
               onClick={() => goDetail(item.id)}
             >
@@ -29,7 +31,7 @@ const SearchResult = ({ result, goDetail }) => {
                 src={item.poster}
                 alt="poster"
               />
-              <Div $padding='0 12px' $width='calc(100% - 54px)'>
+              <Div $padding='0 12px' $grow='0' $width='calc(100% - 54px)'>
                 <Text $size={14} $weight='SEMIBOLD' $align='start'>
                   {item.performanceName}
                 </Text>
