@@ -32,7 +32,7 @@ const Carousel = ({ type, data, goDetail }) => {
 
   return(
     <Div $flex={true} $direction='column' $align='start' $width='100%' $overflow='hidden'>
-      <Text $size={16} $weight='SEMIBOLD' $margin='0 0 7px 0'>
+      <Text $size={16} $weight='BOLD' $margin='0 0 7px 0'>
         {type === 'curation1' && username}
         {CURATION_FEED[type].title}
       </Text>

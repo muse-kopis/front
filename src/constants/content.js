@@ -1,10 +1,10 @@
 export const MOBILE_SIZE = '390px';
 
 export const FONT_WEIGHT = {
-  LIGHT: {fontWeight: 400},
-  MEDIUM: {fontWeight: 500},
-  SEMIBOLD: {fontWeight: 600},
-  BOLD: {fontWeight: 700},
+  LIGHT: {fontWeight: 300},
+  MEDIUM: {fontWeight: 400},
+  SEMIBOLD: {fontWeight: 500},
+  BOLD: {fontWeight: 600},
 }
 
 export const CURATION_FEED = {
