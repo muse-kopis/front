@@ -71,7 +71,6 @@ export const ContentCalendarWrapper = styled.div`
     align-items: center;
     height: 100px;
     overflow: hidden;
-    padding: 8px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -81,6 +80,7 @@ export const ContentCalendarWrapper = styled.div`
     color: #3f3f3f;
     font-size: 13px;
     font-weight: 600;
+    padding: 0;
   }
 
   .react-calendar__tile--active,

@@ -24,4 +24,9 @@ export const updateTicketBookApi = async (ticketBookId, data) => {
 export const deleteTicketBookApi = async (ticketBookId) => {
   const response = await del(TICKET_BOOK_URL.detail(ticketBookId));
   return response;
-}
+};
+
+export const getMonthTicketBooksApi = async (year, month) => {
+  const response = await get(TICKET_BOOK_URL.month, { params: { year, month } });
+  return response;
+};

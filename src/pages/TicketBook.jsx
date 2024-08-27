@@ -9,9 +9,13 @@ import { useTicketBook } from "../hooks/TicketBookHooks";
 
 const TicketBook = () => {
   const {
+    yearMonth,
     datas,
+    calendarDatas,
+    getTilePoster,
     fetchPosterImage,
     goTicketBookDetail,
+    handleActiveStartDateChange,
   } = useTicketBook();
 
   const [isBook, setIsBook] = useState(true);
@@ -33,7 +37,12 @@ const TicketBook = () => {
         />
       ) : (
         <>
-        <Calendar />
+        <Calendar 
+          getTilePoster={getTilePoster}
+          yearMonth={yearMonth}
+          activeStartDateChange={handleActiveStartDateChange}
+          datas={calendarDatas}
+        />
         </>
       )}
       <Navigation />
