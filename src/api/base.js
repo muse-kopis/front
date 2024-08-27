@@ -80,6 +80,11 @@ export const formDataPost = async (url, data) => {
   return response;
 }
 
+export const formDataPatch = async (url, data) => {
+  const response = await formDataClient.patch(url, data);
+  return response;
+}
+
 export const getBlob = async (url) => {
   const response = await blobClient.get(url);
   return response;

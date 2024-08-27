@@ -10,7 +10,7 @@ const TicketBookHeader = () => {
   }
 
   const handleCreateTicket = () => {
-    navigation('/createTicket');
+    navigation('/search');
   }
 
   return (

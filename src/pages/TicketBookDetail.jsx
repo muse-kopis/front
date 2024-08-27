@@ -12,11 +12,16 @@ const TicketBookDetail = () => {
     color,
     modal,
     setModal,
+    goTicketBookEdit,
   } = useTicketBookDetail();
-
+  
   return (
     <Div $backgroundColor={GRAY1} $height='100vh'>
-      <BookDetailHeader id={id} />
+      <BookDetailHeader 
+        id={id}
+        data={data}
+        goEdit={goTicketBookEdit}
+      />
       <Div $flex={true}>
         <TicketBook
           data={data}

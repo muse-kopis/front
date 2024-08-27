@@ -1,4 +1,4 @@
-import { get, formDataPost } from './base';
+import { get, formDataPost, formDataPatch, del } from './base';
 import { TICKET_BOOK_URL } from '../constants/api';
 
 export const getTicketBooksApi = async () => {
@@ -15,3 +15,13 @@ export const getTicketBookDetailApi = async (ticketBookId) => {
   const response = await get(TICKET_BOOK_URL.detail(ticketBookId));
   return response;
 };
+
+export const updateTicketBookApi = async (ticketBookId, data) => {
+  const response = await formDataPatch(TICKET_BOOK_URL.detail(ticketBookId), data);
+  return response;
+};
+
+export const deleteTicketBookApi = async (ticketBookId) => {
+  const response = await del(TICKET_BOOK_URL.detail(ticketBookId));
+  return response;
+}

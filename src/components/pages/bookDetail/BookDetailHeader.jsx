@@ -3,7 +3,7 @@ import { Div, Text } from "../../common/div";
 import { BackIcon } from "../../../assets/icons";
 import { DeleteIcon, EditIcon } from "../../../assets/ticketbook";
 
-const BookDetailHeader = () => {
+const BookDetailHeader = ({ id, goEdit, data }) => {
   const navigation = useNavigate();
 
   const handleBack = () => {
@@ -16,6 +16,7 @@ const BookDetailHeader = () => {
       <Text $size={14} $weight='MEDIUM'>티켓북</Text>
       <Div style={{ marginLeft: 'auto'}} $grow='0' $gap='14px' $flex={true}>
         <EditIcon 
+          onClick={() => goEdit(data)}
           style={{cursor: 'pointer'}} 
         />
         <DeleteIcon 

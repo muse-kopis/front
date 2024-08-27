@@ -1,6 +1,6 @@
-export const LockIcon = ({ isLock, setSendData }) => {
+export const LockIcon = ({ isLock, setSendData, sendData }) => {
   const handleLockChange = () => {
-    setSendData((prev) => ({ ...prev, visible: !isLock }))
+    setSendData({ ...sendData, visible: !sendData.visible });
   }
   return (
     <div style={{ cursor: 'pointer' }} onClick={handleLockChange}>
