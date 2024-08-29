@@ -10,3 +10,4 @@ export const GRAY5 = '#606060';
 export const BLACK = '#3C3C3C';
 
 export const DIM = 'rgba(0, 0, 0, 0.4)';
+export const DIM2 = 'rgba(0, 0, 0, 0.8)';

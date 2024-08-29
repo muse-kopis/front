@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
 }
 
 code {
@@ -33,6 +34,11 @@ code {
   margin: 0;
   padding: 0;
   color: #3C3C3C;
+}
+
+*:focus {
+  outline: 0;
+  outline: none;
 }
 
 a {
