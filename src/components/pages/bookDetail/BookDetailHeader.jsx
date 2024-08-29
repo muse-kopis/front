@@ -9,14 +9,20 @@ const Container = styled(Div)`
   position: fixed;
   height: 47px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 18px;
   background-color: ${GRAY1};
   width: 100%;
   z-index: 1;
 `;
 
-const BookDetailHeader = ({ goEdit, data, modal, setModal }) => {
+const Title = styled(Text)`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+const BookDetailHeader = ({ goEdit, data, modal, setModal, isShared = false }) => {
   const navigation = useNavigate();
 
   const handleBack = () => {
@@ -25,18 +31,21 @@ const BookDetailHeader = ({ goEdit, data, modal, setModal }) => {
 
   return (
     <Container>
-      <BackIcon onClick={handleBack} style={{cursor: 'pointer', marginRight: 'auto'}} />
-      <Text $size={14} $weight='MEDIUM'>티켓북</Text>
-      <Div style={{ marginLeft: 'auto'}} $grow='0' $gap='14px' $flex={true}>
-        <EditIcon 
-          onClick={() => goEdit(data)}
-          style={{cursor: 'pointer'}} 
-        />
-        <DeleteIcon 
-          onClick={() => setModal({ ...modal, delete: true })}
-          style={{cursor: 'pointer'}} 
-        />
-      </Div>
+      <BackIcon onClick={handleBack} style={{cursor: 'pointer'}} />
+      <Title $weight='MEDIUM'>티켓북</Title>
+      {!isShared && (
+        <Div $grow='0' $gap='14px' $flex={true}>
+          <EditIcon 
+            onClick={() => goEdit(data)}
+            style={{cursor: 'pointer'}} 
+          />
+          <DeleteIcon 
+            onClick={() => setModal({ ...modal, delete: true })}
+            style={{cursor: 'pointer'}} 
+          />
+        </Div>
+      )}
+
     </Container>
   )
 }

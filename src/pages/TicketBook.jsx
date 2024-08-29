@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import TicketBookHeader from "../components/pages/ticketBook/TicketBookHeader";
 import TicketBookList from "../components/pages/ticketBook/TicketBookList";
 import Navigation from "../components/common/Navigation";
-import Toggle from "../components/pages/ticketBook/Toggle";
 import Calendar from "../components/pages/ticketBook/Calendar";
-import { Div } from "../components/common/div";
 import { useTicketBook } from "../hooks/TicketBookHooks";
 
 const TicketBook = () => {
@@ -12,6 +10,7 @@ const TicketBook = () => {
     yearMonth,
     datas,
     calendarDatas,
+    handleShare,
     getTilePoster,
     fetchPosterImage,
     goTicketBookDetail,
@@ -22,13 +21,11 @@ const TicketBook = () => {
   
   return (
     <>
-      <TicketBookHeader />
-      <Div $flex={true} $padding='0 18px' $margin='47px 0 0'>
-        <Toggle
-          isBook={isBook}
-          setIsBook={setIsBook}         
-        />
-      </Div>
+      <TicketBookHeader 
+        isBook={isBook}
+        setIsBook={setIsBook}
+        handleShare={handleShare} 
+      />
       {isBook ? (
         <TicketBookList
           datas={datas}
