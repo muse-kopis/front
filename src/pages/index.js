@@ -8,3 +8,5 @@ export { default as TicketBookDetail } from './TicketBookDetail';
 export { default as Mypage } from './Mypage';
 export { default as Login } from './Login';
 export { default as Onboarding } from './Onboarding';
+export { default as SharedBook } from './SharedBook';
+export { default as SharedTicketBookDetail } from './SharedTicketBookDetail';

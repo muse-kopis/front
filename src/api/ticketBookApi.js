@@ -35,3 +35,8 @@ export const postShareApi = async () => {
   const response = await formDataPost(TICKET_BOOK_URL.share);
   return response;
 };
+
+export const getShareApi = async (identifier) => {
+  const response = await get(TICKET_BOOK_URL.getShare(identifier));
+  return response;
+};
