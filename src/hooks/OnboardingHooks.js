@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getOnboardingPerformanceApi, postOnboardingPerformanceApi } from "../api/performanceApi";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setName } from "../store/slices/userSlice";
 
 export const useOnboarding = () => {
   const [step, setStep] = useState(1);
@@ -9,6 +11,7 @@ export const useOnboarding = () => {
   const [datas, setDatas] = useState([]);
   const [selectedDatas, setSelectedDatas] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const carouselSettings = {
     dots: false,
@@ -40,7 +43,8 @@ export const useOnboarding = () => {
 
   const handleOnboarding = async () => {
     try {
-      await postOnboardingPerformanceApi({ username, performanceId: selectedDatas }); 
+      const res = await postOnboardingPerformanceApi({ username, performanceId: selectedDatas }); 
+      dispatch(setName(res.data));
       setTimeout(() => {
         setStep(6);
     }, 1000);

@@ -16,6 +16,9 @@ export const userSlice = createSlice({
     setToken: (state, action) => {
       state.value.token = action.payload;
     },
+    setName: (state, action) => {
+      state.value.username = action.payload;
+    },
     login: (state, action) => {
       state.value = action.payload;
     },
@@ -31,6 +34,7 @@ export const userSlice = createSlice({
 });
 
 export const { 
+  setName,
   login, 
   logout,
   setToken,

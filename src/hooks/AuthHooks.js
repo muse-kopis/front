@@ -11,12 +11,17 @@ export const useAuth = () =>{
   const handleOAuthKakao = async (code) => {
     try {
       const response = await getOAuthKakaoApi(code);
-      const token = response.data.token; // 응답 데이터
+      const token = response.data.token;
+      const isNewUser = response.data.isNewUser;
       dispatch(setToken(token));
       const userData = await getUserInfoApi();
       const userInfo = { ...userData.data, token };
       dispatch(login(userInfo));
-      navigate("/");
+      if (isNewUser) {
+        navigate("/onboarding");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error(error);
     }
