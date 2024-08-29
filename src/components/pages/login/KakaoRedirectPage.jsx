@@ -17,7 +17,6 @@ const KakaoRedirectPage = () => {
 
   return (
     <div>
-      <h1>카카오 로그인 중...</h1>
     </div>
   );
 };
