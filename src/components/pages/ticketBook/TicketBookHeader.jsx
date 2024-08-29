@@ -30,7 +30,7 @@ const TicketBookHeader = ({ handleShare, setIsBook, isBook }) => {
   return (
     <Container>
       <Div $flex={true} $justify='space-between' $width='100%'>
-        <Text $size={18} $font='Unbounded' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>
+        <Text $size={18} $font='Lobster' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>
           MUSEE
         </Text>
         <Div $grow='0' $gap='18px' $flex={true}>

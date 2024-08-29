@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <Container>
-      <Text $size={18} $font='Unbounded' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>MUSEE</Text>
+      <Text $size={18} $font='Lobster' $weight='MEDIUM' onClick={handleClick} style={{cursor: 'pointer'}}>MUSEE</Text>
     </Container>
   )
 }

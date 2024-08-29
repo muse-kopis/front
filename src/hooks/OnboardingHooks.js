@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { getOnboardingPerformanceApi } from "../api/performanceApi";
+import { getOnboardingPerformanceApi, postOnboardingPerformanceApi } from "../api/performanceApi";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setName } from "../store/slices/userSlice";
 
 export const useOnboarding = () => {
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(1);
   const [username, setUsername] = useState('');
   const [rankType, setRankType] = useState(0);
   const [datas, setDatas] = useState([]);
   const [selectedDatas, setSelectedDatas] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const carouselSettings = {
     dots: false,
@@ -38,13 +41,32 @@ export const useOnboarding = () => {
     }
   }
 
+  const handleOnboarding = async () => {
+    try {
+      const res = await postOnboardingPerformanceApi({ username, performanceId: selectedDatas }); 
+      dispatch(setName(res.data));
+      setTimeout(() => {
+        setStep(6);
+    }, 1000);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleGoMain = () => {
     navigate('/');
   }
 
   useEffect(() => {
     fetchOnboarding();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (step === 5) {
+      handleOnboarding();
+    }
+    // eslint-disable-next-line
+  }, [step]);
 
   return {
     datas,
