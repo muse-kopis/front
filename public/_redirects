@@ -1,2 +1,2 @@
-/api/* https://musee-kopis.netlify.app/:splat 200
+/* https://musee-kopis.netlify.app/:splat 200
 /*  /index.html 200
