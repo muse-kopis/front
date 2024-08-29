@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { format } from 'date-fns';
-import { getTicketBooksApi, getMonthTicketBooksApi } from "../api/ticketBookApi";
+import { getTicketBooksApi, getMonthTicketBooksApi, postShareApi } from "../api/ticketBookApi";
 import { getPosterApi } from "../api/performanceApi";
 import { useNavigate } from "react-router-dom";
+import { ToastMessage } from "../components/common/Toast";
 
 const CalendarPoster = styled.img`
   width: 100%;
@@ -70,6 +71,17 @@ export const useTicketBook = () => {
       )
     }
   };
+
+  const handleShare = async () => {
+    try {
+      const res = await postShareApi();
+      const url = res.data;
+      await navigator.clipboard.writeText(url);
+      ToastMessage.info("티켓북을 공유할 수 있는 링크를 복사했어요!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
   useEffect(() => {
     fetchTicketBooks();
@@ -84,6 +96,7 @@ export const useTicketBook = () => {
     datas,
     yearMonth,
     calendarDatas,
+    handleShare,
     getTilePoster,
     goTicketBookDetail,
     fetchPosterImage,

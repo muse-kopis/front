@@ -26,3 +26,4 @@ export { ReactComponent as Rank1OnboardingIcon } from './onboarding/Rank1Icon.sv
 export { ReactComponent as Rank2OnboardingIcon } from './onboarding/Rank2Icon.svg';
 export { ReactComponent as Rank3OnboardingIcon } from './onboarding/Rank3Icon.svg';
 export { ReactComponent as RankCheckedIcon } from './onboarding/RankCheckedIcon.svg';
+export { ReactComponent as ShareIcon } from './ShareIcon.svg';
