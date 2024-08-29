@@ -4,11 +4,13 @@ import { Div } from "./components/common/div";
 import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login, Onboarding } from "./pages";
 import KakaoRedirectPage from "./components/pages/login/KakaoRedirectPage";
 import { PrivateRoute } from "./components/auth/PrivateRoute";
+import { StyledToastConatiner } from "./components/common/Toast";
 
 const App = () => {
   return(
     <BrowserRouter>
       <Div $height='100vh' $margin='0 auto' $overflow='auto'>
+        <StyledToastConatiner limit={1} />
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Main />} />

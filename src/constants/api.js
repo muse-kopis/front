@@ -28,4 +28,6 @@ export const TICKET_BOOK_URL = {
   detail: (ticketBookId) => `/ticketBooks/${ticketBookId}`,
   month: '/ticketBooks/month',
   date: '/ticketBooks/date',
+  share: '/ticketBooks/share',
+  getShare: (ticketBookId) => `/ticketBooks/share/${ticketBookId}`,
 }

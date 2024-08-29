@@ -6,12 +6,14 @@ import Toggle from "../components/pages/ticketBook/Toggle";
 import Calendar from "../components/pages/ticketBook/Calendar";
 import { Div } from "../components/common/div";
 import { useTicketBook } from "../hooks/TicketBookHooks";
+import { ToastMessage } from "../components/common/Toast";
 
 const TicketBook = () => {
   const {
     yearMonth,
     datas,
     calendarDatas,
+    handleShare,
     getTilePoster,
     fetchPosterImage,
     goTicketBookDetail,
@@ -22,7 +24,7 @@ const TicketBook = () => {
   
   return (
     <>
-      <TicketBookHeader />
+      <TicketBookHeader handleShare={handleShare} />
       <Div $flex={true} $padding='0 18px' $margin='47px 0 0'>
         <Toggle
           isBook={isBook}
