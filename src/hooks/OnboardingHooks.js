@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getOnboardingPerformanceApi } from "../api/performanceApi";
+import { getOnboardingPerformanceApi, postOnboardingPerformanceApi } from "../api/performanceApi";
 import { useNavigate } from "react-router";
 
 export const useOnboarding = () => {
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(1);
   const [username, setUsername] = useState('');
   const [rankType, setRankType] = useState(0);
   const [datas, setDatas] = useState([]);
@@ -38,13 +38,31 @@ export const useOnboarding = () => {
     }
   }
 
+  const handleOnboarding = async () => {
+    try {
+      await postOnboardingPerformanceApi({ username, performanceId: selectedDatas }); 
+      setTimeout(() => {
+        setStep(6);
+    }, 1000);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const handleGoMain = () => {
     navigate('/');
   }
 
   useEffect(() => {
     fetchOnboarding();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (step === 5) {
+      handleOnboarding();
+    }
+    // eslint-disable-next-line
+  }, [step]);
 
   return {
     datas,
