@@ -28,6 +28,7 @@ export const Button = styled.button`
   border-radius: ${ props => props.$radius || '10px'};
   margin: ${ props => props.$margin || '0'};
   cursor: pointer;
+  font-size: ${ props => props.$size + 'px' || '16px'};
   ${ props => FONT_WEIGHT[props.$weight] || FONT_WEIGHT.SEMIBOLD};
   color: ${ props => props.$color || WHITE};
   &:disabled {

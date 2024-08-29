@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Div } from "./components/common/div";
-import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login } from "./pages";
+import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login, Onboarding } from "./pages";
 import KakaoRedirectPage from "./components/pages/login/KakaoRedirectPage";
 import { PrivateRoute } from "./components/auth/PrivateRoute";
 
@@ -20,6 +20,7 @@ const App = () => {
             <Route path="/book-detail/:ticketBookId" element={<TicketBookDetail />} />
             <Route path="/create-book/:performanceId" element={<CreateBook />} />
           </Route>
+          <Route path="/onboarding" element={<Onboarding />}></Route>
           <Route path="/oauth/redirected/kakao" element={<KakaoRedirectPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
         </Routes>

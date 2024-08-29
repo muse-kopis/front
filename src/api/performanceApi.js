@@ -55,3 +55,13 @@ export const getSearchPerformanceApi = async (search) => {
   const response = await get(PERFORMANCE_URL.search, {params: {search}});
   return response;
 };
+
+export const getOnboardingPerformanceApi = async () => {
+  const response = await get(PERFORMANCE_URL.onboarding);
+  return response;
+};
+
+export const postOnboardingPerformanceApi = async (data) => {
+  const response = await post(PERFORMANCE_URL.onboarding, data);
+  return response;
+}

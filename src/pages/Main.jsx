@@ -18,7 +18,7 @@ const Main = () => {
     <>
       <Header />
       <Banner />
-      <Div $flex={true} $padding='25px 18px' $direction='column' $align='start' $width='100%' $gap='40px'>
+      <Div $flex={true} $padding='25px 18px' $margin=' 0 0 60px' $direction='column' $align='start' $width='100%' $gap='40px'>
         <Carousel 
           type='curation1'
           data={recommendPerformances}
