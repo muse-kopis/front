@@ -76,7 +76,7 @@ const Login = () => {
   return (
     <Div>
       <Header />
-      <Div $padding='96px 0 0'>
+      <Div $padding='96px 0 0' $width='100%' style={{ overflow: 'hidden'}}>
         <Text $font='Lobster' $margin='0 18px' $align='start' $size={20}>
           Muse Your Experience
         </Text>
@@ -106,7 +106,7 @@ const Login = () => {
           <img src="/assets/loginMemories.png" alt="ticketbook" style={{ width: '100%'}} />
         </Div>
       </Div>
-      <Div $margin='114px 0 0'>
+      <Div $margin='114px 0 0' $width='100%' style={{ overflow: 'hidden'}}>
         <Text $font='Lobster' $margin='0 18px' $align='start' $size={20}>
           Maximize Your Moments
         </Text>
@@ -125,7 +125,7 @@ const Login = () => {
           </Slider>  
         </SlideContainer>
       </Div>
-      <Div $margin='90px 0 0'/>
+      <Div $margin='90px 0 0' />
       <Button onClick={handleLogin}>
         <img src="/assets/kakao.png" alt="kakao" style={{ width: '20px', marginRight: '8px'}} />
         <Text>

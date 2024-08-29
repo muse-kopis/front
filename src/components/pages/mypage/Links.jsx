@@ -14,13 +14,17 @@ const LinkButton = styled(Link)`
 `;
 
 const Links = ({ logout }) => {
+  const handleClick = () => {
+    window.location.href = 'https://pf.kakao.com/_LxmcAn';
+  }
+
   return(
     <Div $flex={true} $width='100%' $direction='column' $gap='30px' $margin='50px 0 0'>
       <LinkButton to='/favorite'>
         <Text $size={12} $color={GRAY5} $weight='MEDIUM'>저장한 공연</Text>
         <GoIcon />
       </LinkButton>
-      <LinkButton>
+      <LinkButton onClick={handleClick} >
         <Text $size={12} $color={GRAY5} $weight='MEDIUM'>문의하기</Text>
         <GoIcon />
       </LinkButton>
