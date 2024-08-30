@@ -6,6 +6,7 @@ import { StarBigIcon, EmptyStarBigIcon } from "../../assets/ticketbook";
 import Modal from "./Modal";
 
 const Container = styled.div`
+  margin-top: 30px;
   height: 566px;
   width: 338px;
   overflow-y: scroll;

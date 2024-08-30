@@ -19,7 +19,7 @@ const Links = ({ logout }) => {
   }
 
   return(
-    <Div $flex={true} $width='100%' $direction='column' $gap='30px' $margin='50px 0 0'>
+    <Div $flex={true} $width='100%' $direction='column' $gap='30px' $margin='50px 0 100px'>
       <LinkButton to='/favorite'>
         <Text $size={12} $color={GRAY5} $weight='MEDIUM'>저장한 공연</Text>
         <GoIcon />

@@ -6,10 +6,11 @@ export const ContentCalendarWrapper = styled.div`
   flex: 1;
 
   .react-calendar {
-    margin-top: 24px;
+    margin-top: 120px;
     width: 100%;
     border: none;
     font-family: Pretendard;
+    margin-bottom: 100px;
   }
 
   .react-calendar__navigation {
