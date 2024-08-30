@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MUSEE",
+  "name": "MUSEE",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,5 +11,12 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "id": "musee-kopis",
+  "description": "나만을 위한 공연 큐레이션 및 기록, 공유 서비스",
+  "categories": [
+    "music",
+    "photo",
+    "social"
+  ]
 }
