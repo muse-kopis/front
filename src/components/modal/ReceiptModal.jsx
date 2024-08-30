@@ -8,11 +8,13 @@ import Modal from "./Modal";
 const Container = styled.div`
   height: 566px;
   width: 338px;
-  margin-top: 110px;
-  background-image: url(${ReceiptSmallImage});
+  overflow-y: scroll;
   background-size: cover;
   background-position: center;
   margin-left: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TitleContainer = styled(Div)`
@@ -27,7 +29,7 @@ const TitleContainer = styled(Div)`
 
 const StarContainer = styled(Div)`
   position: absolute;
-  bottom: 188px;
+  top: 355px;
   left: 87px;
   display: flex;
   gap: 4px;
@@ -43,6 +45,7 @@ const ReceiptModal = ({ isOpen, closeModal, data }) => {
   return (
     <Modal $isOpen={isOpen}>
       <Container >
+        <img src={ReceiptSmallImage} alt='receipt' style={{ width: '338px', height: '540px', objectPosition:'top' }} />
         <TitleContainer>
           <Title>
             {data?.viewDate}
@@ -69,9 +72,11 @@ const ReceiptModal = ({ isOpen, closeModal, data }) => {
           ))}
         </StarContainer>
       </Container>
-      <Text $size={12} style={{ cursor: 'pointer'}} onClick={closeModal}>
-        닫기
-      </Text>
+      <Div $padding='0 0 50px 0'>
+        <Text $size={12} style={{ cursor: 'pointer'}} onClick={closeModal}>
+          닫기
+        </Text>
+      </Div>
     </Modal>
   )
 }
