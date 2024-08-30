@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Div, Text } from "../../common/div";
 import { CreateTicketIcon, ShareIcon } from "../../../assets/icons";
 import Toggle from "./Toggle";
+import { CopyToClipboard } from "react-copy-to-clipboard/src";
 
 const Container = styled(Div)`
   position: fixed;
@@ -16,7 +17,7 @@ const Container = styled(Div)`
   align-items: space-between;
 `;
 
-const TicketBookHeader = ({ handleShare, setIsBook, isBook }) => {
+const TicketBookHeader = ({ shareLink, handleShare, setIsBook, isBook }) => {
   const navigation = useNavigate();
 
   const handleClick = () => {
@@ -34,7 +35,9 @@ const TicketBookHeader = ({ handleShare, setIsBook, isBook }) => {
           MUSEE
         </Text>
         <Div $grow='0' $gap='18px' $flex={true}>
-          <ShareIcon onClick={handleShare} style={{ cursor: 'pointer' }} />
+          <CopyToClipboard text={shareLink} onCopy={handleShare} >
+            <ShareIcon style={{ cursor: 'pointer' }} />
+          </CopyToClipboard>
           <CreateTicketIcon onClick={handleCreateTicket} style={{cursor: 'pointer'}} />
         </Div>
       </Div>

@@ -18,6 +18,7 @@ export const useTicketBook = () => {
   const navigate = useNavigate();
   const [datas, setDatas] = useState([]);
   const [calendarDatas, setCalendarDatas] = useState({});
+  const [shareLink, setShareLink] = useState('');
 
   const fetchTicketBooks = async () => {
     const response = await getTicketBooksApi();
@@ -72,29 +73,22 @@ export const useTicketBook = () => {
     }
   };
 
-  const handleShare = async () => {
+  const fetchShareLink = async () => {
     try {
       const res = await postShareApi();
       const url = res.data;
-
-      const element = document.createElement('textarea');
-      element.value = url;
-      element.setAttribute('readonly', '');
-      element.style.position = 'fixed';
-      element.style.opacity = '0';
-      document.body.appendChild(element);
-      element.select();
-      element.setSelectionRange(0, 99999);
-      document.execCommand('copy');
-      document.body.removeChild(element);
-
-      ToastMessage.info("티켓북을 공유할 수 있는 링크를 복사했어요!");
+      setShareLink(url);
     } catch (error) {
       console.error(error);
     }
+  }
+
+  const handleShare = async () => {
+    ToastMessage.info("!!!티켓북을 공유할 수 있는 링크를 복사했어요!");
   };
   
   useEffect(() => {
+    fetchShareLink();
     fetchTicketBooks();
   }, []);
 
@@ -104,6 +98,7 @@ export const useTicketBook = () => {
   }, [yearMonth]);
 
   return {
+    shareLink,
     datas,
     yearMonth,
     calendarDatas,

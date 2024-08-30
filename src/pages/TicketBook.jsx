@@ -7,6 +7,7 @@ import { useTicketBook } from "../hooks/TicketBookHooks";
 
 const TicketBook = () => {
   const {
+    shareLink,
     yearMonth,
     datas,
     calendarDatas,
@@ -22,6 +23,7 @@ const TicketBook = () => {
   return (
     <>
       <TicketBookHeader 
+        shareLink={shareLink}
         isBook={isBook}
         setIsBook={setIsBook}
         handleShare={handleShare} 
