@@ -76,7 +76,18 @@ export const useTicketBook = () => {
     try {
       const res = await postShareApi();
       const url = res.data;
-      await navigator.clipboard.writeText(url);
+
+      // await navigator.clipboard.writeText(url);
+      const element = document.createElement('textarea');
+      element.value = url;
+      element.setAttribute('readonly', '');
+      element.style.position = 'fixed';
+      element.style.opacity = '0';
+      document.body.appendChild(element);
+      element.select();
+      document.execCommand('copy');
+      document.body.removeChild(element);
+
       ToastMessage.info("티켓북을 공유할 수 있는 링크를 복사했어요!");
     } catch (error) {
       console.error(error);
