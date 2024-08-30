@@ -77,7 +77,6 @@ export const useTicketBook = () => {
       const res = await postShareApi();
       const url = res.data;
 
-      // await navigator.clipboard.writeText(url);
       const element = document.createElement('textarea');
       element.value = url;
       element.setAttribute('readonly', '');
@@ -85,6 +84,7 @@ export const useTicketBook = () => {
       element.style.opacity = '0';
       document.body.appendChild(element);
       element.select();
+      element.setSelectionRange(0, 99999);
       document.execCommand('copy');
       document.body.removeChild(element);
 
