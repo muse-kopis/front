@@ -1,70 +1,29 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+뮤즈(Musee)
+---
 
-In the project directory, you can run:
+나만을 위한 공연 큐레이션 및 기록, 공유 서비스 <br>
+**사용자 맞춤 공연 추천 및 기록 플랫폼, 뮤즈(Musee)**
+<br> <br>
+"공연은 관심이 있는데 쉽게 접하기가 어렵고, <br>
+섣불리 도전하기엔 가격이 너무 부담이야."<br>
+"내가 본 공연을 기록하고 싶은데 마땅한 곳이 없어."
+<br> <br>
+공연 관람과 티켓북 관리를 하고싶다면,
+<br>**지금 바로 뮤즈(Musee)를 이용해 보세요!**
+<br>
 
-### `npm start`
+### ✨ TEAM MEMBER
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/"><img src="https://github.com/user-attachments/assets/683994fe-db35-4e81-b19e-c3d26eee2127" width="100px"; alt=""/><br /><sub><b>PM/DE | 김예림</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/rlcz1"><img src="https://avatars.githubusercontent.com/u/86146265?v=4" width="100px;" alt=""/><br /><sub><b>FE | 전규리</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/juntae6942"><img src="https://avatars.githubusercontent.com/u/52229930?v=4" width="100px;" alt=""/><br /><sub><b>BE | 신동훈</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/juntae6942"><img src="https://avatars.githubusercontent.com/u/65760583?v=4" width="100px;" alt=""/><br /><sub><b>BE | 박준태</b></sub></a><br /></td>
+  </tbody>
+</table>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![랜딩페이지](https://github.com/user-attachments/assets/be8bd22c-0ca2-4bc2-ad2f-86f2f0f4f60d)
