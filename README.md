@@ -1,8 +1,7 @@
 
 
-뮤즈(Musee)
+뮤즈(Musee) https://musee-kopis.netlify.app<br>
 ---
-
 나만을 위한 공연 큐레이션 및 기록, 공유 서비스 <br>
 **사용자 맞춤 공연 추천 및 기록 플랫폼, 뮤즈(Musee)**
 <br> <br>
