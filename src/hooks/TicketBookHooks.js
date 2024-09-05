@@ -84,7 +84,7 @@ export const useTicketBook = () => {
   }
 
   const handleShare = async () => {
-    ToastMessage.info("!!!티켓북을 공유할 수 있는 링크를 복사했어요!");
+    ToastMessage.info("티켓북을 공유할 수 있는 링크를 복사했어요!");
   };
   
   useEffect(() => {
