@@ -1,12 +1,8 @@
 
 
-뮤즈(Musee) https://musee-kopis.netlify.app<br>
+사용자 맞춤 공연 추천 및 기록 플랫폼, 뮤즈(Musee)
 ---
-나만을 위한 공연 큐레이션 및 기록, 공유 서비스 <br>
-**사용자 맞춤 공연 추천 및 기록 플랫폼, 뮤즈(Musee)**
-<br> <br>
-"공연은 관심이 있는데 쉽게 접하기가 어렵고, <br>
-섣불리 도전하기엔 가격이 너무 부담이야."<br>
+"공연은 관심이 있는데 쉽게 접하기가 어렵고, 섣불리 도전하기엔 가격이 너무 부담이야."<br>
 "내가 본 공연을 기록하고 싶은데 마땅한 곳이 없어."
 <br> <br>
 공연 관람과 티켓북 관리를 하고싶다면,
@@ -25,4 +21,5 @@
 </table>
 <br>
 
-![랜딩페이지](https://github.com/user-attachments/assets/be8bd22c-0ca2-4bc2-ad2f-86f2f0f4f60d)
+![Group 1171275792](https://github.com/user-attachments/assets/ac986a31-4c41-4320-a9fe-a4a0ae63a732)
+
