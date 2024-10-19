@@ -1,22 +1,79 @@
 {
   "short_name": "MUSEE",
+  "dir": "auto",
   "name": "MUSEE",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "https://main--musee-kopis.netlify.app/?launchedfrom=homescreen",
+  "scope": "https://main--musee-kopis.netlify.app",
+  "id": "https://main--musee-kopis.netlify.app/eJvxw1Thb1u1epvshUFr",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "./icons/apple-touch-icon-57x57.png",
+      "sizes": "57x57",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-60x60.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-76x76.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-114x114.png",
+      "sizes": "114x114",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+
+    {
+      "src": "./icons/apple-touch-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/apple-touch-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
-  "id": "musee-kopis",
-  "description": "나만을 위한 공연 큐레이션 및 기록, 공유 서비스",
+  "protocol_handlers": [
+    {
+      "protocol": "web+pwa",
+      "url": "https://main--musee-kopis.netlify.app/?launchedfrom=homescreen&amp;pwaprotocolredirect=%s"
+    },
+    {
+      "protocol": "web+musee",
+      "url": "https://main--musee-kopis.netlify.app/?launchedfrom=homescreen&amp;pwaprotocolredirect=%s"
+    }
+  ],
+  "description": "사용자 맞춤 공연 추천 및 기록 플랫폼, 뮤즈(Musee)",
+  "lang": "ko",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "fullscreen",
+    "window-controls-overlay"
+  ],
   "categories": [
+    "entertainment",
     "music",
-    "photo",
     "social"
   ]
 }
