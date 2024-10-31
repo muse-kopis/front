@@ -4,7 +4,8 @@ import { Div } from "./components/common/div";
 import { Main, Detail, Favorite, Search, CreateBook, TicketBook, TicketBookDetail, Mypage, Login, Onboarding, SharedBook, SharedTicketBookDetail } from "./pages";
 import KakaoRedirectPage from "./components/pages/login/KakaoRedirectPage";
 import { PrivateRoute } from "./components/auth/PrivateRoute";
-import { StyledToastConatiner } from "./components/common/Toast";
+import { StyledToastConatiner } from "./components/common/Toast"
+import { PwaGuide } from "./components/common/PwaGuide";
 
 const App = () => {
   return(
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/oauth/redirected/kakao" element={<KakaoRedirectPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
         </Routes>
+        <PwaGuide />
       </Div>
     </BrowserRouter>
   )
