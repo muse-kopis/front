@@ -1,4 +1,4 @@
-import { post, get } from './base';
+import { get } from './base';
 import { REVIEW_URL } from '../constants/api';
 
 export const getPublicReviewApi = async (performanceId) => {
