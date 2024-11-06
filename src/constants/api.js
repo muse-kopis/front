@@ -31,3 +31,7 @@ export const TICKET_BOOK_URL = {
   share: '/ticketBooks/share',
   getShare: (ticketBookId) => `/ticketBooks/share/${ticketBookId}`,
 }
+
+export const PHOTO_URL = {
+  upload: '/photos',
+}

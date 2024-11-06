@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { getDetailPerformanceApi } from '../api/performanceApi';
 import { postTicketBookApi, updateTicketBookApi } from '../api/ticketBookApi';
+import { postPhotosApi } from '../api/photosApi';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { format, parse } from 'date-fns';
@@ -12,6 +13,7 @@ export const useCreateBook = (id) => {
   const fileRef = useRef(null);
   const [previewImages, setPreviewImages] = useState([]);
   const [performanceData, setPerformanceData] = useState({});
+  const [uploadPhotos, setUploadPhotos] = useState([]);
   const [sendData, setSendData] = useState({
     performanceId: '',
     viewDate: '',
@@ -36,7 +38,8 @@ export const useCreateBook = (id) => {
 
   const handleFileChange = (e) => {
     const fileArr = Array.from(e.target.files);
-    setSendData({ ...sendData, photos: fileArr });
+    setUploadPhotos(fileArr);
+    // setSendData({ ...sendData, photos: fileArr });
 
     const fileURLs = fileArr.map(file => URL.createObjectURL(file));
     setPreviewImages(fileURLs);
@@ -50,19 +53,31 @@ export const useCreateBook = (id) => {
     setSendData({ ...sendData, [type]: value });
   };
 
-  const handleCreate = async () => {
+  const handleUploadPhotos = async () => {
     const formData = new FormData();
-    sendData.photos.forEach(photo => {
+    uploadPhotos.forEach(photo => {
       formData.append('photos', photo);
     });
-    formData.append('performanceId', sendData.performanceId);
-    formData.append('viewDate', sendData.viewDate);
-    formData.append('castMembers', sendData.castMembers);
-    formData.append('content', sendData.content);
-    formData.append('star', sendData.star);
-    formData.append('visible', sendData.visible);
     try {
-      const response = await postTicketBookApi(formData);
+      const response = await postPhotosApi(formData);
+      if (response.status === 200 || response.status === 201) {
+        const updateData = { ...sendData, photos: response.data };
+        return updateData;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    return null;
+  }
+
+  useEffect(() => {
+    console.log(sendData)
+  }, [sendData])
+
+  const handleCreate = async () => {
+    try {
+      const data = uploadPhotos.length > 0 ? await handleUploadPhotos() : sendData;
+      const response = await postTicketBookApi(data);
       if (response.status === 200 || response.status === 201) {
         navigate('/ticket');
       }
@@ -72,21 +87,9 @@ export const useCreateBook = (id) => {
   }
 
   const handleEdit = async () => {
-    const formData = new FormData();
-    // if (sendData.photos.length === 0) {
-    //   formData.append('photos', null);
-    // }
-    // sendData.photos.forEach(photo => {
-    //   formData.append('photos', photo);
-    // });
-    formData.append('performanceId', sendData.performanceId);
-    formData.append('viewDate', sendData.viewDate);
-    formData.append('castMembers', sendData.castMembers);
-    formData.append('content', sendData.content);
-    formData.append('star', sendData.star);
-    formData.append('visible', sendData.visible);
     try {
-      const response = await updateTicketBookApi(editId, formData);
+      const data = uploadPhotos.length > 0 ? await handleUploadPhotos() : sendData;
+      const response = await updateTicketBookApi(editId, data);
       if (response.status === 200 || response.status === 201) {
         navigate('/ticket');
       }
