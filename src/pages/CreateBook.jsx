@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CreateBookHeader from "../components/pages/createBook/CreateBookHeader";
-import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon } from "../assets/icons";
+import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon, DeleteImageIcon } from "../assets/icons";
 import { Div, Text, TextArea, Button } from "../components/common/div";
 import { GRAY2, GRAY3, GRAY4, GRAY5, NAVY } from "../constants/color";
 import StarRatings from 'react-star-ratings';
@@ -45,8 +45,27 @@ const AddPhoto = styled(Div)`
   cursor: pointer;
 `;
 
+const DeletePhotoSvg = styled(DeleteImageIcon)`
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+`;
+
+const PhotoContainer = styled.div`
+  border: solid 1px #f1f1f1;
+  border-radius: 10px;
+  width: calc((100% - 16px) / 3);
+  aspect-ratio: 1/1;
+  margin-bottom: 30px;
+  &:nth-child(2) {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+`;
+
 const CreateBook = () => {
-  const id = useParams().performanceId;
+  const id = useParams().performanceId || null;
   const {
     buttonDisabled,
     editId,
@@ -60,6 +79,7 @@ const CreateBook = () => {
     setSendData,
     handleFileChange,
     handleAddPhoto,
+    handleDeletePhoto,
     handleDataChange,
   } = useCreateBook(id);
 
@@ -84,7 +104,7 @@ const CreateBook = () => {
             <Input 
               type="datetime-local" 
               onChange={e => handleDataChange('viewDate', e.target.value)} 
-              value={sendData.viewDate}
+              value={sendData?.viewDate || ''}
             />
           </InputItem>
           <InputItem>
@@ -93,7 +113,7 @@ const CreateBook = () => {
             </Div>
             <Input 
               type="text" 
-              value={performanceData?.venue} 
+              value={performanceData?.venue | ''} 
               placeholder="장소를 입력해주세요" 
               readOnly 
             />
@@ -106,7 +126,7 @@ const CreateBook = () => {
               type="text" 
               onChange={e => handleDataChange('castMembers', e.target.value)} 
               placeholder="출연자 정보를 입력해주세요" 
-              value={sendData.castMembers}
+              value={sendData?.castMembers || ''}
             />
           </InputItem>
           <InputItem>
@@ -119,7 +139,7 @@ const CreateBook = () => {
         <Div $flex={true} $width='100%' $padding='0 30px' $direction='column'>
           <Div $justify='space-between' $flex={true} $width='100%'>
           <StarRatings
-            rating={sendData.star}
+            rating={sendData?.star}
             changeRating={rating => handleDataChange('star', rating)}
             numberOfStars={5}
             starHoverColor={NAVY}
@@ -141,29 +161,33 @@ const CreateBook = () => {
             $padding='12px 14px' 
             placeholder='공연을 보며 느꼈던 것, 기억에 남았던 것들을 기록해보세요. 좋았던 장면, 넘버, 무대 연출, 출연진들의 합, 다양한 감상을 솔직하게 남겨 오늘을 추억하세요 :)'
             onChange={e => handleDataChange('content', e.target.value)}
-            value={sendData.content}
+            value={sendData?.content || ''}
           />
         </Div>
         <Div $padding='0 18px' $width='100%' $margin='40px 0 0'>
-          <Div $flex={true} $gap='8px' $justify='start'>
+          <Div $flex={true} $justify='start' $padding='0 8px'>
             {previewImages.map((url, index) => (
-              <img 
-                key={index} 
-                src={url} 
-                alt={`preview-${index}`}
-                style={{ borderRadius: '10px', height: '110px', width: '110px' }}
-              />
+              <PhotoContainer key={index} >
+                <img 
+                  src={url} 
+                  alt={`preview-${index}`}
+                  style={{ borderRadius: '10px', aspectRatio: '1/1', width: '100%'}}
+                />
+                <DeletePhotoSvg onClick={() => handleDeletePhoto(index, true)} />
+              </PhotoContainer>
             ))}
             {editData?.photos.map((url, index) => (
-              <img 
-                key={index} 
-                src={url.url} 
-                alt={`preview-${index}`}
-                style={{ borderRadius: '10px', height: '110px', width: '110px' }}
-              />
+              <PhotoContainer key={index} >
+                <img 
+                  src={url.url} 
+                  alt={`preview-${index}`}
+                  style={{ borderRadius: '10px', aspectRatio: '1/1', width: '100%'}}
+                />
+                <DeletePhotoSvg onClick={() => handleDeletePhoto(index)} />
+              </PhotoContainer>
             ))}
           </Div>
-          {previewImages.length === 0 && (
+          {previewImages.length + editData?.photos.length < 3 && (
             <AddPhoto onClick={handleAddPhoto} $backgroundColor={GRAY2} $border={`1px solid ${GRAY4}`} $radius='10px' $height='110px'>
               <Text $weight='SEMIBOLD' $color={GRAY5}>함께 기록할 사진을 추가해주세요</Text>
               <PlusIcon />
