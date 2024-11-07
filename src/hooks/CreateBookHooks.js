@@ -9,8 +9,8 @@ import { format, parse } from 'date-fns';
 export const useCreateBook = (id) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const editData = location.state?.data;
   const fileRef = useRef(null);
+  const [editData, setEditData] = useState(location.state?.data);
   const [previewImages, setPreviewImages] = useState([]);
   const [performanceData, setPerformanceData] = useState({});
   const [uploadPhotos, setUploadPhotos] = useState([]);
@@ -47,6 +47,18 @@ export const useCreateBook = (id) => {
 
   const handleAddPhoto = () => {
     fileRef.current.click();
+  };
+
+  const handleDeletePhoto = (index, isUpload = false) => {
+    const newPhotos = [...uploadPhotos];
+    newPhotos.splice(index, 1);
+    if (isUpload) {
+      setUploadPhotos(newPhotos);
+      const fileURLs = newPhotos.map(file => URL.createObjectURL(file));
+      setPreviewImages(fileURLs);
+    } else {
+      setEditData({ ...editData, photos: editData.photos.filter((_, i) => i !== index) });
+    }
   };
 
   const handleDataChange = (type, value) => {
@@ -88,8 +100,13 @@ export const useCreateBook = (id) => {
 
   const handleEdit = async () => {
     try {
-      const data = uploadPhotos.length > 0 ? await handleUploadPhotos() : sendData;
-      const response = await updateTicketBookApi(editId, data);
+      const photos = editData.photos.map(photo => photo.url);
+      if (uploadPhotos.length > 0) {
+        const uploadPhotoUrls = await handleUploadPhotos();
+        photos.push(...uploadPhotoUrls.photos);
+      }
+      sendData.photos = photos;
+      const response = await updateTicketBookApi(editId, sendData);
       if (response.status === 200 || response.status === 201) {
         navigate('/ticket');
       }
@@ -99,9 +116,8 @@ export const useCreateBook = (id) => {
   }
 
   useEffect(() => {
-    fetchDetail(id);
-    // eslint-disable-next-line
-  }, []);
+    fetchDetail(id || '');
+  }, [id]);
 
   useEffect(() => {
     if (editData) {
@@ -138,6 +154,7 @@ export const useCreateBook = (id) => {
     setSendData,
     handleFileChange,
     handleAddPhoto,
+    handleDeletePhoto,
     handleDataChange,
   }
 }
