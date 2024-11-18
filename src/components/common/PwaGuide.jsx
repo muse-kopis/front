@@ -5,7 +5,7 @@ import { DimDiv, Text, Div } from './div';
 
 const Button = styled.button`
   position: fixed;
-  bottom: 70px;
+  bottom: 90px;
   right: 20px;
   width: 65px;
   height: 65px;
