@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useSpring, animated } from '@react-spring/web';
-import { DimDiv, Text, Div } from './div';
+import { animated } from '@react-spring/web';
+import { DimDiv, Text, Div, Button } from './div';
+import usePwa from '../../hooks/PwaHooks';
 
-const Button = styled.button`
+const PwaButton = styled.button`
   position: fixed;
   bottom: 90px;
   right: 20px;
@@ -27,30 +28,34 @@ const BottomSheetContainer = styled(animated.div)`
   bottom: 0;
   border-radius: 20px 20px 0 0;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const InstallButton = styled(Button)`
+  width: 100%;
+  margin-top: 20px;
 `;
 
 export const PwaGuide = () => {
-  const [isShow, setIsShow] = useState(false);
+  const { 
+    isPwa,
+    isInstallable,
+    isShow, 
+    bottomSheetAnimation, 
+    setIsShow,
+    handleClose,
+    handleInstall
+  } = usePwa();
 
-  const bottomSheetAnimation = useSpring({
-    transform: isShow ? 'translateY(0%)' : 'translateY(100%)',
-    opacity: isShow ? 1 : 0,
-    config: {
-      tension: 200,
-      friction: 20,
-    },
-  });
-
-  const handleClose = () => {
-    setIsShow(false);
-  };
+  if (!isPwa) return null;  // PWA로 실행 중이면 컴포넌트를 렌더링하지 않음
 
   return (
     <>
-      <Button onClick={() => setIsShow(true)} />
+      <PwaButton onClick={() => setIsShow(true)} />
       {isShow && <DimDiv onClick={handleClose} />}
       <BottomSheetContainer style={bottomSheetAnimation}>
-        <Div $flex={true} $justify='space-between' $maxWidth='auto'>
+        <Div $flex={true} $grow={0} $justify='space-between' $maxWidth='auto'>
           <Text $weight='BOLD'>앱 설치하기</Text>
           <Text 
             onClick={handleClose}
@@ -59,6 +64,14 @@ export const PwaGuide = () => {
             닫기
           </Text>
         </Div>
+        {isInstallable && (
+          <Div $flex={true} $maxWidth='auto' $direction='column' $justify='center' $margin='30px 0 0 0' $align='center'>
+          <Text>앱으로 설치하면 더 빨리 접속할 수 있어요.</Text>
+            <InstallButton onClick={handleInstall}>
+              설치하기
+            </InstallButton>
+          </Div>
+        )}
       </BottomSheetContainer>
     </>
   );
