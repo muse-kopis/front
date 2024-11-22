@@ -5,6 +5,7 @@ import Banner from "../components/pages/main/Banner";
 import Carousel from "../components/pages/main/Carousel";
 import Navigation from "../components/common/Navigation";
 import { usePerformance } from "../hooks/PerformanceHooks";
+import { PwaGuide } from "../components/common/PwaGuide";
 
 const Main = () => {
   const { 
@@ -36,6 +37,7 @@ const Main = () => {
         />
       </Div>
       <Navigation />
+      <PwaGuide />
     </>
   ) 
 }
