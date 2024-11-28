@@ -1,4 +1,4 @@
-import { post, get } from './base';
+import { get } from './base';
 import { AUTH_URL } from '../constants/api';
 
 export const getOAuthKakaoApi = async (code) => {

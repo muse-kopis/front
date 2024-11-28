@@ -15,6 +15,13 @@ const Image = styled.img`
   object-fit: cover;
 `;  
 
+const NextButtonFix = ({currentSlide, slideCount, ...props}) => (
+  <NextArrow {...props} />
+);
+const PrevButtonFix = ({currentSlide, slideCount, ...props}) => (
+  <PrevArrow {...props} />
+);
+
 const ImageCarousel = ({ photos = [] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const settings = {
@@ -26,8 +33,8 @@ const ImageCarousel = ({ photos = [] }) => {
     beforeChange: (oldIndex, newIndex) => {
       setCurrentSlide(newIndex);
     },
-    nextArrow: currentSlide+1 === photos.length ? null : <NextArrow />,
-    prevArrow: currentSlide === 0 ? null : <PrevArrow />
+    nextArrow: currentSlide+1 === photos.length ? null : <NextButtonFix />,
+    prevArrow: currentSlide === 0 ? null : <PrevButtonFix />
   };
 
   return(
