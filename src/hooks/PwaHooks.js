@@ -5,25 +5,58 @@ const usePwa = () => {
   const [isShow, setIsShow] = useState(false);
   const [isPwa, setIsPwa] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  useEffect(() => {
+    console.log('deferredPrompt', deferredPrompt);
+  }, [deferredPrompt]);
 
   // PWA 상태 체크
   const checkPwaMode = useCallback(() => {
-    const isPwaMode = 
-      window.matchMedia('(display-mode: standalone)').matches ||
-      window.matchMedia('(display-mode: fullscreen)').matches ||
-      window.matchMedia('(display-mode: minimal-ui)').matches ||
-      window.navigator.standalone ||
-      document.referrer.includes('android-app://') ||
-      window.location.search.includes('launchedfrom=homescreen');
+    // 브라우저에서 실행 중인지 확인
+    const isBrowser = window.matchMedia('(display-mode: browser)').matches;
     
+    // PWA 모드로 실행 중인지 확인
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    const isMinimalUi = window.matchMedia('(display-mode: minimal-ui)').matches;
+    const isWindowControls = window.matchMedia('(display-mode: window-controls-overlay)').matches;
+
+    // PWA 실행 여부 확인
+    const isPwaLaunched = window.location.search.includes('launchedfrom=homescreen');
+    const isIosStandalone = window.navigator.standalone;
+
+    // 브라우저로 실행 중이면 false, PWA로 실행 중일 때만 true
+    const isPwaMode = !isBrowser && (
+      isStandalone || 
+      isMinimalUi || 
+      isWindowControls || 
+      isPwaLaunched || 
+      isIosStandalone
+    );
+
+    // 디버깅용 로그
+    console.log('PWA Check:', {
+      isBrowser,
+      displayModes: {
+        standalone: isStandalone,
+        minimalUi: isMinimalUi,
+        windowControls: isWindowControls
+      },
+      isPwaLaunched,
+      isIosStandalone,
+      isPwaMode,
+      currentUrl: window.location.href
+    });
+
     setIsPwa(isPwaMode);
   }, []);
 
   // PWA 설치 프롬프트 이벤트 핸들러
-  const handleBeforeInstallPrompt = (e) => {
+  const handleBeforeInstallPrompt = useCallback((e) => {
     e.preventDefault();  // 브라우저 기본 설치 배너 방지
     setDeferredPrompt(e);  // 설치 프롬프트 저장
-  };
+  }, []);
 
   useEffect(() => {
     checkPwaMode();
@@ -65,6 +98,8 @@ const usePwa = () => {
   };
 
   return {
+    isSafari,
+    isIOS,
     isPwa,
     isInstallable: !!deferredPrompt,
     isShow,

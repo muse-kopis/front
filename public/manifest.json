@@ -6,8 +6,8 @@
   "theme_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
-  "start_url": "https://main--musee-kopis.netlify.app/?launchedfrom=homescreen",
-  "scope": "https://main--musee-kopis.netlify.app",
+  "start_url": "/",
+  "scope": "/",
   "id": "https://main--musee-kopis.netlify.app/eJvxw1Thb1u1epvshUFr",
   "prefer_related_applications": false,
   "icons": [
@@ -41,7 +41,6 @@
       "sizes": "120x120",
       "type": "image/png"
     },
-
     {
       "src": "./icons/apple-touch-icon-144x144.png",
       "sizes": "144x144",
@@ -50,6 +49,18 @@
     {
       "src": "./icons/apple-touch-icon-152x152.png",
       "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "192x192",
+      "src": "./icons/maskable_icon_x192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "./icons/maskable_icon_x512.png",
       "type": "image/png"
     }
   ],
