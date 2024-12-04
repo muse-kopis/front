@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { animated } from '@react-spring/web';
 import { DimDiv, Text, Div, Button } from './div';
 import usePwa from '../../hooks/PwaHooks';
+import { PWA_GUIDE } from '../../constants/content';
 
 const PwaButton = styled.button`
   position: fixed;
@@ -37,8 +38,20 @@ const InstallButton = styled(Button)`
   margin-top: 20px;
 `;
 
+const GuideContainer = styled(Div)`
+  flex: 1;
+  max-width: auto;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px 0 0 0;
+  align-items: center;
+`;
+
 export const PwaGuide = () => {
   const { 
+    isSafari,
+    isIOS,
     isPwa,
     isInstallable,
     isShow, 
@@ -48,29 +61,47 @@ export const PwaGuide = () => {
     handleInstall
   } = usePwa();
 
-  if (!isPwa) return null;  // PWA로 실행 중이면 컴포넌트를 렌더링하지 않음
+  if (isPwa) return null;  // PWA로 실행 중이면 컴포넌트를 렌더링하지 않음
 
   return (
     <>
       <PwaButton onClick={() => setIsShow(true)} />
       {isShow && <DimDiv onClick={handleClose} />}
       <BottomSheetContainer style={bottomSheetAnimation}>
-        <Div $flex={true} $grow={0} $justify='space-between' $maxWidth='auto'>
+        <Div $flex $grow={0} $justify='space-between' $maxWidth='auto'>
           <Text $weight='BOLD'>앱 설치하기</Text>
-          <Text 
-            onClick={handleClose}
-            style={{ cursor: 'pointer'}} 
-          >
-            닫기
-          </Text>
+          <Text onClick={handleClose} style={{ cursor: 'pointer' }}>닫기</Text>
         </Div>
+
         {isInstallable && (
-          <Div $flex={true} $maxWidth='auto' $direction='column' $justify='center' $margin='30px 0 0 0' $align='center'>
-          <Text>앱으로 설치하면 더 빨리 접속할 수 있어요.</Text>
-            <InstallButton onClick={handleInstall}>
-              설치하기
-            </InstallButton>
-          </Div>
+          <GuideContainer>
+            <Text>클릭하면 바로 설치돼요!</Text>
+            <InstallButton onClick={handleInstall}>설치하기</InstallButton>
+          </GuideContainer>
+        )}
+
+        {isSafari && isIOS && (
+          <GuideContainer>
+            {PWA_GUIDE.safari_ios.map((item, index) => (
+              <Div key={index} $flex $direction='row' $justify='flex-start' $gap='8px' $align='center'>
+                <p>{index + 1}.</p>
+                {item.icon}
+                <Text>{item.text}</Text>
+              </Div>
+            ))}
+          </GuideContainer>
+        )}
+
+        {isIOS && !isSafari && (
+          <GuideContainer>
+            <Text>{PWA_GUIDE.ios_other}</Text>
+          </GuideContainer>
+        )}
+
+        {isSafari && !isIOS && (
+          <GuideContainer>
+            <Text>{PWA_GUIDE.safari_desktop}</Text>
+          </GuideContainer>
         )}
       </BottomSheetContainer>
     </>

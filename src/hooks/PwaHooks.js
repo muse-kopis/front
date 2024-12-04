@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSpring } from '@react-spring/web';
+import { ToastMessage } from "../components/common/Toast";
 
 const usePwa = () => {
   const [isShow, setIsShow] = useState(false);
@@ -7,10 +8,6 @@ const usePwa = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  useEffect(() => {
-    console.log('deferredPrompt', deferredPrompt);
-  }, [deferredPrompt]);
 
   // PWA 상태 체크
   const checkPwaMode = useCallback(() => {
@@ -77,7 +74,7 @@ const usePwa = () => {
     const result = await deferredPrompt.userChoice;
     
     if (result.outcome === 'accepted') {
-      console.log('PWA 설치가 완료되었습니다.');
+      ToastMessage.info('PWA 설치가 완료되었습니다.');
     }
       
     setDeferredPrompt(null);  // 프롬프트는 한 번만 사용 가능
