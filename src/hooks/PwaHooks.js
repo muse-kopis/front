@@ -11,40 +11,37 @@ const usePwa = () => {
 
   // PWA 상태 체크
   const checkPwaMode = useCallback(() => {
-    // 브라우저에서 실행 중인지 확인
-    const isBrowser = window.matchMedia('(display-mode: browser)').matches;
-    
-    // PWA 모드로 실행 중인지 확인
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-    const isMinimalUi = window.matchMedia('(display-mode: minimal-ui)').matches;
-    const isWindowControls = window.matchMedia('(display-mode: window-controls-overlay)').matches;
+
+    const displayModes = {
+      browser: window.matchMedia('(display-mode: browser)').matches,
+      standalone: window.matchMedia('(display-mode: standalone)').matches,
+      minimalUi: window.matchMedia('(display-mode: minimal-ui)').matches,
+      windowControls: window.matchMedia('(display-mode: window-controls-overlay)').matches
+    };
 
     // PWA 실행 여부 확인
     const isPwaLaunched = window.location.search.includes('launchedfrom=homescreen');
     const isIosStandalone = window.navigator.standalone;
 
     // 브라우저로 실행 중이면 false, PWA로 실행 중일 때만 true
-    const isPwaMode = !isBrowser && (
-      isStandalone || 
-      isMinimalUi || 
-      isWindowControls || 
+    const isPwaMode = Boolean(
+      displayModes.standalone || 
+      displayModes.minimalUi || 
+      displayModes.windowControls || 
       isPwaLaunched || 
       isIosStandalone
     );
 
     // 디버깅용 로그
     console.log('PWA Check:', {
-      isBrowser,
-      displayModes: {
-        standalone: isStandalone,
-        minimalUi: isMinimalUi,
-        windowControls: isWindowControls
-      },
+      displayModes,
       isPwaLaunched,
       isIosStandalone,
       isPwaMode,
       currentUrl: window.location.href
     });
+
+    console.log('isPwaMode', isPwaMode);
 
     setIsPwa(isPwaMode);
   }, []);
