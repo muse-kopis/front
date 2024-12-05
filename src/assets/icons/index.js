@@ -28,3 +28,5 @@ export { ReactComponent as Rank3OnboardingIcon } from './onboarding/Rank3Icon.sv
 export { ReactComponent as RankCheckedIcon } from './onboarding/RankCheckedIcon.svg';
 export { ReactComponent as ShareIcon } from './ShareIcon.svg';
 export { ReactComponent as DeleteImageIcon } from './DeleteImageIcon.svg';
+export { ReactComponent as SafariShareIconIcon } from './SafariShareIcon.svg';
+export { ReactComponent as SafariAddHomeIcon } from './SafariAddHomeIcon.svg';

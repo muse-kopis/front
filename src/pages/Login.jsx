@@ -5,6 +5,7 @@ import Header from "../components/common/Header";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { PwaGuide } from "../components/common/PwaGuide";
 
 const Button = styled.button`
   border: none;
@@ -74,7 +75,7 @@ const Login = () => {
   }
 
   return (
-    <Div>
+    <>
       <Header />
       <Div $padding='96px 0 0' $width='100%' style={{ overflow: 'hidden'}}>
         <Text $font='Lobster' $margin='0 18px' $align='start' $size={20}>
@@ -132,7 +133,8 @@ const Login = () => {
           카카오 계정으로 3초만에 로그인
         </Text>
       </Button>  
-    </Div>
+      <PwaGuide />
+    </>
   )
 }
 
