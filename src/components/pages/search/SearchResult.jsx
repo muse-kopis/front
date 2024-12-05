@@ -30,6 +30,7 @@ const SearchResult = ({ result, goDetail }) => {
               <Poster
                 src={item.poster}
                 alt="poster"
+                loading="lazy"
               />
               <Div $padding='0 12px' $grow='0' $width='calc(100% - 54px)'>
                 <Text $size={14} $weight='SEMIBOLD' $align='start'>
