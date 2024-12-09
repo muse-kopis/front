@@ -1,5 +1,5 @@
 import { post, get, del, getBlob } from './base';
-import { PERFORMANCE_URL } from '../constants/api';
+import { PERFORMANCE_URL, USER_GENRE_URL } from '../constants/api';
 
 export const getNowPerformanceApi = async () => {
   const response = await get(PERFORMANCE_URL.state, {params: {state: '공연중'}});
@@ -57,11 +57,11 @@ export const getSearchPerformanceApi = async (search) => {
 };
 
 export const getOnboardingPerformanceApi = async () => {
-  const response = await get(PERFORMANCE_URL.onboarding);
+  const response = await get(USER_GENRE_URL.onboarding);
   return response;
 };
 
 export const postOnboardingPerformanceApi = async (data) => {
-  const response = await post(PERFORMANCE_URL.onboarding, data);
+  const response = await post(USER_GENRE_URL.onboarding, data);
   return response;
 }

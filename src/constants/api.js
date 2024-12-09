@@ -1,6 +1,8 @@
+export const USER_GENRE_URL = {
+  onboarding: '/users/genre/onboarding',
+}
 
 export const PERFORMANCE_URL = {
-  onboarding: '/performances/onboarding',
   detail: (performanceId) => `/performances/${performanceId}`,
   state: '/performances/state',
   random: '/performances/random',

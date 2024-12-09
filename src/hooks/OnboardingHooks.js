@@ -43,7 +43,7 @@ export const useOnboarding = () => {
 
   const handleOnboarding = async () => {
     try {
-      const res = await postOnboardingPerformanceApi({ username, performanceId: selectedDatas }); 
+      const res = await postOnboardingPerformanceApi({ username, performanceIds: selectedDatas }); 
       dispatch(setName(res.data));
       setTimeout(() => {
         setStep(6);
