@@ -15,7 +15,7 @@ const LinkButton = styled(Link)`
 
 const Links = ({ logout }) => {
   const handleClick = () => {
-    window.location.href = 'https://pf.kakao.com/_LxmcAn';
+    window.location.href = 'https://www.notion.so/MUSEE-11b0cdd700f78074b473f3759010de3e?pvs=4';
   }
 
   return(
