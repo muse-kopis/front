@@ -52,4 +52,7 @@ export const ToastMessage = {
   info: (message, options = {}) => {
     toast.info(message, { ...defaultToastOption, ...options });
   },
+  error: (message, options = {}) => {
+    toast.error(message, { ...defaultToastOption, ...options });
+  },
 };
