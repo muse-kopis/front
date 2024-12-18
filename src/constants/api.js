@@ -23,6 +23,7 @@ export const REVIEW_URL = {
 export const AUTH_URL = {
   kakao: '/oauth/login/kakao',
   userInfo: '/oauth/mypage',
+  nickname: (nickname) => `/oauth/username?username=${nickname}`,
 }
 
 export const TICKET_BOOK_URL = {

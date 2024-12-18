@@ -20,6 +20,7 @@ const Modal = styled.div`
   }
   ${({ $dim }) => $dim ? `
     background-color: ${DIM};
+    width: 100vw;
   ` : ''}
 `;
 
