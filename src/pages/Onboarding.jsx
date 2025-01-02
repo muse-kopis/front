@@ -15,14 +15,15 @@ const Onboarding = () => {
     username,
     step,
     carouselSettings,
+    isShowErrorModal,
     handleGoMain,
     setStep,
     setRankType,
     setUsername,
-    selectPerformance
+    selectPerformance,
+    closeErrorModal,
+    handleRetry,
   } = useOnboarding();
-
-  console.log(step)
 
   return (
     <>
@@ -53,6 +54,9 @@ const Onboarding = () => {
         ) : step === 5 ?(
           <OnboardingLoading
             username={username}
+            isShowErrorModal={isShowErrorModal}
+            closeErrorModal={closeErrorModal}
+            handleRetry={handleRetry}
           />
         ) : 
           <OnboardingEnd

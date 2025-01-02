@@ -5,11 +5,12 @@ import { useDispatch } from "react-redux";
 import { setName } from "../store/slices/userSlice";
 
 export const useOnboarding = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1); 
   const [username, setUsername] = useState('');
   const [rankType, setRankType] = useState(0);
   const [datas, setDatas] = useState([]);
   const [selectedDatas, setSelectedDatas] = useState([]);
+  const [isShowErrorModal, setIsShowErrorModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -43,12 +44,24 @@ export const useOnboarding = () => {
 
   const handleOnboarding = async () => {
     try {
-      const res = await postOnboardingPerformanceApi({ username, performanceIds: selectedDatas }); 
+      const timeout = new Promise((res, rej) => {
+        setTimeout(() => {
+          rej(new Error('timeout'));
+        }, 30000); //30초
+      });
+
+      const apiRequest = postOnboardingPerformanceApi({
+        username, 
+        performanceIds: selectedDatas 
+      });
+      const res = await Promise.race([timeout, apiRequest]);
+
       dispatch(setName(res.data));
       setTimeout(() => {
         setStep(6);
     }, 1000);
     } catch (error) {
+      setIsShowErrorModal(true);
       console.error(error);
     }
   }
@@ -68,6 +81,19 @@ export const useOnboarding = () => {
     // eslint-disable-next-line
   }, [step]);
 
+  const closeErrorModal = () => {
+    setStep(1);
+    setUsername('');
+    setRankType(0);
+    setSelectedDatas([]);
+    setIsShowErrorModal(false);
+  }
+
+  const handleRetry = () => {
+    setIsShowErrorModal(false);
+    handleOnboarding();
+  }
+
   return {
     datas,
     selectedDatas,
@@ -75,10 +101,13 @@ export const useOnboarding = () => {
     username,
     step,
     carouselSettings,
+    isShowErrorModal,
     handleGoMain,
     selectPerformance,
     setRankType,
     setStep,
     setUsername,
+    closeErrorModal,
+    handleRetry,
   }
 }
