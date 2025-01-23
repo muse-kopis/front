@@ -16,6 +16,7 @@ const TicketBook = () => {
     fetchPosterImage,
     goTicketBookDetail,
     handleActiveStartDateChange,
+    getPosterColor,
   } = useTicketBook();
 
   const [isBook, setIsBook] = useState(true);
@@ -33,6 +34,7 @@ const TicketBook = () => {
           datas={datas}
           getPoster={fetchPosterImage}
           goDetail={goTicketBookDetail}
+          getPosterColor={getPosterColor}
         />
       ) : (
         <>

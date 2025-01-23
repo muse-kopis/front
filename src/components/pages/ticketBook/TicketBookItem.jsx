@@ -22,29 +22,19 @@ const Poster = styled.img`
   border-right: 2px solid ${GRAY2};
 `;
 
-const TicketBookItem = ({ data, getPoster, goDetail }) => {
+const TicketBookItem = ({ data, goDetail, getPosterColor }) => {
   const imgRef = useRef(null);
-  const [poster, setPoster] = useState('#111');
-
-  useEffect(() => {
-    const fetchPosterImage = async () => {
-      const response = await getPoster(data.performanceId);
-      setPoster(response);
-    }
-    fetchPosterImage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data?.performanceId]);
-
-  const { color } = useColorThief(poster, {
-    format: 'hex',
-    colorCount: 10,
-    quality: 10,
-  });
 
   return (
     <Container onClick={() => goDetail(data?.id)}>
       <Div $height='200px' $flex={true} $grow='0' >
-        <Div $backgroundColor={color} $width='10px' $height='100%' $grow='0' style={{ borderTopLeftRadius: 3, borderBottomLeftRadius: 3 }} />
+      <Div 
+          $backgroundColor={getPosterColor(data.performanceId)}
+          $width='10px' 
+          $height='100%' 
+          $grow='0' 
+          style={{ borderTopLeftRadius: 3, borderBottomLeftRadius: 3 }} 
+        />
         <Poster 
           src={data?.poster} 
           alt="티켓북 이미지" 

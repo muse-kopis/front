@@ -5,6 +5,8 @@ import { getTicketBooksApi, getMonthTicketBooksApi, postShareApi } from "../api/
 import { getPosterApi } from "../api/performanceApi";
 import { useNavigate } from "react-router-dom";
 import { ToastMessage } from "../components/common/Toast";
+// import useColorThief from 'use-color-thief';
+import ColorThief from 'colorthief';  // ColorThief 직접 import
 
 const CalendarPoster = styled.img`
   width: 100%;
@@ -19,11 +21,55 @@ export const useTicketBook = () => {
   const [datas, setDatas] = useState([]);
   const [calendarDatas, setCalendarDatas] = useState({});
   const [shareLink, setShareLink] = useState('');
+  const [posterColors, setPosterColors] = useState({});  // 포스터별 색상 저장
+
+  // 이미지 로드 및 색상 추출 함수
+  const loadImageAndExtractColor = async (imageUrl, performanceId) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = "Anonymous";
+      img.src = imageUrl;
+      
+      img.onload = () => {
+        try {
+          const colorThief = new ColorThief();
+          const color = colorThief.getColor(img);
+          // RGB를 HEX로 변환
+          const hexColor = `#${color.map(x => {
+            const hex = x.toString(16);
+            return hex.length === 1 ? '0' + hex : hex;
+          }).join('')}`;
+          
+          setPosterColors(prev => ({
+            ...prev,
+            [performanceId]: hexColor
+          }));
+          resolve(hexColor);
+        } catch (error) {
+          console.error('Color extraction failed:', error);
+          resolve('#111');
+        }
+      };
+    });
+  };
+  
 
   const fetchTicketBooks = async () => {
     const response = await getTicketBooksApi();
     setDatas(response.data);
+
+    // 각 포스터의 색상 추출
+    response.data.forEach(ticket => {
+      if (ticket.poster && !posterColors[ticket.performanceId]) {
+        loadImageAndExtractColor(ticket.poster, ticket.performanceId);
+      }
+    });
   }
+
+   // 특정 티켓의 포스터 색상 가져오기
+   const getPosterColor = (performanceId) => {
+    return posterColors[performanceId] || '#111';
+  };
 
   const fetchPosterImage = async (performanceId) => {
     try {
@@ -107,5 +153,6 @@ export const useTicketBook = () => {
     goTicketBookDetail,
     fetchPosterImage,
     handleActiveStartDateChange,
+    getPosterColor,
   }
 }

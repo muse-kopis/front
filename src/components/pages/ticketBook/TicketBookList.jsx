@@ -3,7 +3,7 @@ import EmptyTicketBookList from "./EmptyTicketBookList";
 import { Div } from "../../common/div";
 import TicketBookItem from "./TicketBookItem";
 
-const TicketBookList = ({ datas = [], getPoster, goDetail, isShared = false }) => {
+const TicketBookList = ({ datas = [], getPoster, goDetail, isShared = false, getPosterColor }) => {
   return (
     <Div $padding='17px 32px' $margin={isShared ? '60px 0 60px' : '100px 0 60px'}>
       <Div $flex={true} $justify='start' $gap='32px 16px' $wrap={true}>
@@ -15,6 +15,7 @@ const TicketBookList = ({ datas = [], getPoster, goDetail, isShared = false }) =
               data={data}
               getPoster={getPoster}
               goDetail={goDetail}
+              getPosterColor={getPosterColor}
             />
           ))
         }
