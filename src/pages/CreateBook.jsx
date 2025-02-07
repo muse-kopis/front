@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import CreateBookHeader from "../components/pages/createBook/CreateBookHeader";
-import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon, DeleteImageIcon } from "../assets/icons";
+import { CalendarIcon, CastIcon, LockIcon, MapIcon, ReviewIcon, PlusIcon, DeleteImageIcon, GenreIcon } from "../assets/icons";
 import { Div, Text, TextArea, Button } from "../components/common/div";
 import { GRAY2, GRAY3, GRAY4, GRAY5, NAVY } from "../constants/color";
 import StarRatings from 'react-star-ratings';
 import { useParams } from "react-router-dom";
 import { useCreateBook } from "../hooks/CreateBookHooks";
+import { GenreSelectModal } from "../components/modal/GenreSelectModal";
 
 const Poster = styled.img`
   width: 166px;
@@ -74,6 +75,9 @@ const CreateBook = () => {
     previewImages,
     performanceData,
     sendData,
+    genreData,
+    isGenreSelectModalOpen,
+    selectedGenres,
     handleEdit,
     handleCreate,
     setSendData,
@@ -81,6 +85,9 @@ const CreateBook = () => {
     handleAddPhoto,
     handleDeletePhoto,
     handleDataChange,
+    handleGenreSelect,
+    handleGenreSave,
+    handleGenreOpenModal,
   } = useCreateBook(id);
 
   return (
@@ -127,6 +134,20 @@ const CreateBook = () => {
               onChange={e => handleDataChange('castMembers', e.target.value)} 
               placeholder="출연자 정보를 입력해주세요" 
               value={sendData?.castMembers || ''}
+            />
+          </InputItem>
+          <InputItem>
+            <Div $width='43px' $grow='0'>
+              <GenreIcon />
+            </Div>
+            <Input 
+              type="text" 
+              onChange={e => handleDataChange('genre', e.target.value)} 
+              placeholder="공연 장르를 입력해주세요" 
+              value={genreData.join(', ')}
+              readOnly
+              onClick={() => handleGenreOpenModal()}
+              style={{ cursor: 'pointer' }}
             />
           </InputItem>
           <InputItem>
@@ -211,6 +232,12 @@ const CreateBook = () => {
           </Button>
         </Div>
       </Div>
+      <GenreSelectModal 
+        isOpen={isGenreSelectModalOpen} 
+        handleGenreSelect={handleGenreSelect} 
+        selectedGenres={selectedGenres} 
+        handleGenreSave={handleGenreSave} 
+      />
     </>
   )
 }

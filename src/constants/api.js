@@ -38,3 +38,7 @@ export const TICKET_BOOK_URL = {
 export const PHOTO_URL = {
   upload: '/photos',
 }
+
+export const GENRE_URL = {
+  genre: '/genre',
+}

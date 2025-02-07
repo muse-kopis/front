@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { getDetailPerformanceApi } from '../api/performanceApi';
-import { postTicketBookApi, updateTicketBookApi } from '../api/ticketBookApi';
+import { postTicketBookApi, updateTicketBookApi, postGenreApi } from '../api/ticketBookApi';
 import { postPhotosApi } from '../api/photosApi';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
@@ -14,6 +14,8 @@ export const useCreateBook = (id) => {
   const [previewImages, setPreviewImages] = useState([]);
   const [performanceData, setPerformanceData] = useState({});
   const [uploadPhotos, setUploadPhotos] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [isGenreSelectModalOpen, setIsGenreSelectModalOpen] = useState(false);
   const [sendData, setSendData] = useState({
     performanceId: '',
     viewDate: '',
@@ -23,9 +25,29 @@ export const useCreateBook = (id) => {
     visible: true,
     photos: []
   });
+  const [genreData, setGenreData] = useState([]);
   const [editId, setEditId] = useState(null);
-  const buttonDisabled = sendData.viewDate === '' || sendData.castMembers === '' || sendData.content === '' || sendData.star === 0;
+  const buttonDisabled = sendData.viewDate === '' || sendData.castMembers === '' || sendData.content === '' || sendData.star === 0 || genreData.length === 0;
   const existEditImages = editData?.photos.length > 0;
+
+  const handleGenreSelect = (genre) => {
+    if (selectedGenres.includes(genre)) {
+      setSelectedGenres(selectedGenres.filter(g => g !== genre));
+    } else {
+      if (selectedGenres.length < 3) {
+        setSelectedGenres([...selectedGenres, genre]);
+      }
+    }
+  }
+
+  const handleGenreSave = () => {
+    setGenreData(selectedGenres);
+    setIsGenreSelectModalOpen(false);
+  }
+
+  const handleGenreOpenModal = () => {
+    setIsGenreSelectModalOpen(true);
+  }
 
   const fetchDetail = async (performanceId) => {
     const response = await getDetailPerformanceApi(performanceId);
@@ -39,7 +61,6 @@ export const useCreateBook = (id) => {
   const handleFileChange = (e) => {
     const fileArr = Array.from(e.target.files);
     setUploadPhotos(fileArr);
-    // setSendData({ ...sendData, photos: fileArr });
 
     const fileURLs = fileArr.map(file => URL.createObjectURL(file));
     setPreviewImages(fileURLs);
@@ -82,16 +103,17 @@ export const useCreateBook = (id) => {
     return null;
   }
 
-  useEffect(() => {
-    console.log(sendData)
-  }, [sendData])
-
   const handleCreate = async () => {
     try {
       const data = uploadPhotos.length > 0 ? await handleUploadPhotos() : sendData;
       const response = await postTicketBookApi(data);
       if (response.status === 200 || response.status === 201) {
-        navigate('/ticket');
+        const genres = genreData;
+        const performanceId = sendData.performanceId;
+        const genreResponse = await postGenreApi(genres, performanceId);
+        if (genreResponse.status === 200 || genreResponse.status === 201) {
+          navigate('/ticket');
+        }
       }
     } catch (error) {
       console.error(error);
@@ -147,8 +169,11 @@ export const useCreateBook = (id) => {
     editId,
     fileRef,
     sendData,
+    genreData,
     previewImages,
     performanceData,
+    isGenreSelectModalOpen,
+    selectedGenres,
     handleEdit,
     handleCreate,
     setSendData,
@@ -156,5 +181,8 @@ export const useCreateBook = (id) => {
     handleAddPhoto,
     handleDeletePhoto,
     handleDataChange,
+    handleGenreSelect,
+    handleGenreSave,
+    handleGenreOpenModal,
   }
 }

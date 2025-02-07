@@ -47,3 +47,10 @@ export const PWA_GUIDE = {
   safari_desktop: <span><b>chrome</b> 브라우저에서 접속해주세요</span>,
   ios_other: <span><b>Safari</b> 브라우저에서 접속해주세요</span>,
 }
+
+export const GENRE_LIST = [
+  "범죄", "스릴러", "액션", "판타지", "드라마",
+  "시대극", "역사", "고전문학", "로맨스", "코미디",
+  "가족극", "힐링극", "록", "재즈", "밴드뮤지컬",
+  "어린이뮤지컬", "체험형"
+];
