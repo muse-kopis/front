@@ -120,7 +120,7 @@ const CreateBook = () => {
             </Div>
             <Input 
               type="text" 
-              value={performanceData?.venue | ''} 
+              value={performanceData?.venue || ''} 
               placeholder="장소를 입력해주세요" 
               readOnly 
             />
