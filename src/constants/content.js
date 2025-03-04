@@ -48,9 +48,36 @@ export const PWA_GUIDE = {
   ios_other: <span><b>Safari</b> 브라우저에서 접속해주세요</span>,
 }
 
-export const GENRE_LIST = [
-  "범죄", "스릴러", "액션", "판타지", "드라마",
-  "시대극", "역사", "고전문학", "로맨스", "코미디",
-  "가족극", "힐링극", "록", "재즈", "밴드뮤지컬",
-  "어린이뮤지컬", "체험형"
-];
+export const GENRE_MAP = {
+  CRIME: "범죄",
+  FANTASY: "판타지",
+  FAIRY_TALE: "동화",
+  FAMILY: "가족극",
+  ADVENTURE: "어드벤처",
+  HEALING: "힐링극",
+  ROMANCE: "로맨스",
+  CHILD: "어린이뮤지컬",
+  THRILLER: "스릴러",
+  HISTORY: "시대극",
+  DRAMA: "드라마",
+  PHILOSOPHY: "철학",
+  JAZZ: "재즈",
+  HUMOR: "유머",
+  COMEDY: "코미디",
+  ROCK: "록",
+  ACTION: "액션",
+  OFFICE: "오피스",
+  PARODY: "패러디",
+  NON_VERBAL: "비언어극",
+  PERFORMANCE: "퍼포먼스",
+  ART: "아트",
+  INTERACTIVE: "체험형",
+  EMOTION: "감성",
+  YOUTHFUL_GROWTH: "청춘성장",
+  CABARET: "캬바레",
+  FEMALE_ONLY: "여성전용",
+  BAND_MUSICAL: "밴드뮤지컬",
+  RELIGION: "종교",
+  CLASSIC_NOVEL: "고전소설",
+  TALK_CONCERT: "토크콘서트",
+};

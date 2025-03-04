@@ -5,6 +5,7 @@ import { postPhotosApi } from '../api/photosApi';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { format, parse } from 'date-fns';
+import { GENRE_MAP } from '../constants/content';
 
 export const useCreateBook = (id) => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ export const useCreateBook = (id) => {
   const [editId, setEditId] = useState(null);
   const buttonDisabled = sendData.viewDate === '' || sendData.castMembers === '' || sendData.content === '' || sendData.star === 0 || genreData.length === 0;
   const existEditImages = editData?.photos.length > 0;
+  const selectedGenreDatas = selectedGenres.map(genre => GENRE_MAP[genre]).join(', ');
 
   const handleGenreSelect = (genre) => {
     if (selectedGenres.includes(genre)) {
@@ -174,6 +176,7 @@ export const useCreateBook = (id) => {
     performanceData,
     isGenreSelectModalOpen,
     selectedGenres,
+    selectedGenreDatas,
     handleEdit,
     handleCreate,
     setSendData,

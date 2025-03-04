@@ -2,7 +2,8 @@ import Modal from "./Modal";
 import styled from "styled-components";
 import { Button, Div, Text } from "../common/div";
 import { GRAY5, BLUE, LIGHT_BLUE, GRAY2 } from "../../constants/color";
-import { GENRE_LIST } from "../../constants/content";
+import { GENRE_MAP } from "../../constants/content";
+
 const Container = styled.div`
   width: 318px;
   padding: 18px;
@@ -22,12 +23,12 @@ const GenreTag = styled(Text)`
   cursor: pointer;
   ${props => props.$status === 'active' && `
     background-color: ${LIGHT_BLUE};
-    border: none;
+    border: 0.5px solid ${LIGHT_BLUE};
     color: ${BLUE};
   `}
   ${props => props.$status === 'disabled' && `
     background-color: ${GRAY2};
-    border: none;
+    border: 0.5px solid ${GRAY2};
     color: ${GRAY5};
   `}
 `;
@@ -49,13 +50,13 @@ export const GenreSelectModal = ({ isOpen = true, handleGenreSelect, selectedGen
           최대 3개까지 선택하실 수 있어요.
         </Text>
         <Div $flex={true} $gap='10px 8px' $margin='16px 0 0' $wrap={true} $justify='flex-start'>
-          {GENRE_LIST.map((genre, index) => (
+          {Object.entries(GENRE_MAP).map(([key, value]) => (
             <GenreTag 
-              $status={selectedGenres.includes(genre) ? 'active' : selectedGenres.length > 2 ? 'disabled' : 'normal'}
-              key={index} 
-              onClick={() => handleGenreSelect(genre)}
+              $status={selectedGenres.includes(key) ? 'active' : selectedGenres.length > 2 ? 'disabled' : 'normal'}
+              key={key} 
+              onClick={() => handleGenreSelect(key)}
             >
-              {genre}
+              {value}
             </GenreTag>
           ))}
         </Div>

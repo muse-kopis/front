@@ -78,6 +78,7 @@ const CreateBook = () => {
     genreData,
     isGenreSelectModalOpen,
     selectedGenres,
+    selectedGenreDatas,
     handleEdit,
     handleCreate,
     setSendData,
@@ -144,7 +145,7 @@ const CreateBook = () => {
               type="text" 
               onChange={e => handleDataChange('genre', e.target.value)} 
               placeholder="공연 장르를 입력해주세요" 
-              value={genreData.join(', ')}
+              value={selectedGenreDatas}
               readOnly
               onClick={() => handleGenreOpenModal()}
               style={{ cursor: 'pointer' }}
