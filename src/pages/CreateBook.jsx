@@ -90,7 +90,7 @@ const CreateBook = () => {
     handleGenreSave,
     handleGenreOpenModal,
   } = useCreateBook(id);
-
+  
   return (
     <>
       <CreateBookHeader />
@@ -209,7 +209,7 @@ const CreateBook = () => {
               </PhotoContainer>
             ))}
           </Div>
-          {previewImages.length + editData?.photos.length < 3 && (
+          {previewImages.length + (editData?.photos?.length || 0) < 3 && (
             <AddPhoto onClick={handleAddPhoto} $backgroundColor={GRAY2} $border={`1px solid ${GRAY4}`} $radius='10px' $height='110px'>
               <Text $weight='SEMIBOLD' $color={GRAY5}>함께 기록할 사진을 추가해주세요</Text>
               <PlusIcon />
