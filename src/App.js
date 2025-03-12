@@ -21,8 +21,6 @@ const App = () => {
             <Route path="/ticket" element={<TicketBook />} />
             <Route path="/book-detail/:ticketBookId" element={<TicketBookDetail />} />
             <Route path="/create-book/:performanceId" element={<CreateBook />} />
-          </Route>
-          <Route element={<PublicRoute />}>
             <Route path="/onboarding" element={<Onboarding />} />
           </Route>
           <Route path="/shared-book-detail/:ticketBookId" element={<SharedTicketBookDetail />} />
